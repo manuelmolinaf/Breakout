@@ -1,0 +1,49 @@
+[33mcommit 6ae575723c88710480b62c5b87e1a3990e14d155[m[33m ([m[1;36mHEAD -> [m[1;32mjesse-feature[m[33m, [m[1;31morigin/jesse-feature[m[33m)[m
+Author: Jesse <jessepena@hotmail.es>
+Date:   Sun Mar 11 18:50:54 2018 -0400
+
+    Updated the code to match the new enforced style guide
+
+[33mcommit a358b8a480df670ddac217fd27b26561b8559199[m[33m ([m[1;31morigin/manuel-feature[m[33m)[m
+Author: manuelmolinaf <manuelmolinaf@outlook.com>
+Date:   Sun Mar 11 16:45:43 2018 -0400
+
+    updating
+
+[33mcommit fa8cd4c0c6a01382ffc1ece7de4cd1c72607f1cb[m
+Author: manuelmolinaf <manuelmolinaf@outlook.com>
+Date:   Sun Mar 11 16:40:54 2018 -0400
+
+    updating
+
+[33mcommit c3ebf2d7409957f1a77c7b560a15b0fa6596cb36[m
+Author: manuelmolinaf <manuelmolinaf@outlook.com>
+Date:   Sun Mar 11 16:33:19 2018 -0400
+
+    added matrix4 class
+
+[33mcommit 2ff9bef6d925df6170f3bf540f69f5d3b42bfce3[m[33m ([m[1;31morigin/master[m[33m)[m
+Author: Raúl Roa <raul.roa@gmail.com>
+Date:   Thu Jun 9 08:08:41 2016 -0500
+
+    Changed README.md
+    
+    Added missing mention to OpenGL.
+
+[33mcommit 6dc9b1361fe71617be57caed5d3584e43173bc8a[m
+Author: Winner Crespo <wistcc@users.noreply.github.com>
+Date:   Wed Jun 8 13:35:42 2016 -0800
+
+    Adding externals and editing .gitignore (#1)
+
+[33mcommit ce2a7541306300cc13dbdde48643268efd6509dd[m
+Author: Raúl Roa <raul.roa@gmail.com>
+Date:   Wed Jun 8 16:09:38 2016 -0500
+
+    First commit.
+
+[33mcommit 9dc3a3c39abb9a0cdeae0c0154565274d7bd8687[m
+Author: Raúl Roa <raul.roa@gmail.com>
+Date:   Wed Jun 8 16:02:50 2016 -0500
+
+    Initial commit
