@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _VECTOR_2_HPP_
-#define _VECTOR_2_HPP_
+#ifndef _VECTOR_2_HPP
+#define _VECTOR_2_HPP
 
 namespace engine
 {
@@ -46,4 +46,4 @@ namespace engine
 
 
 
-#endif // !_VECTOR_2_HPP_
+#endif // !_VECTOR_2_HPP
