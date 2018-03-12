@@ -31,11 +31,11 @@ namespace engine
 
 		//public functions
 
-		float* get_row(int pRowNumber);
-		float* get_column(int pColumnNumber);
+		float*  get_row(int pRowNumber);
+		float*  get_column(int pColumnNumber);
 		float** get_matrix();
 		float** get_transpose();
-		
+		float** get_inverse();
 
 		void set_identity();
 
@@ -49,6 +49,7 @@ namespace engine
 		matrix_4 operator/(matrix_4& pRightSide);
 
 		friend std::ostream& operator<<(std::ostream& pOstream, matrix_4 pMatrix);
+		float& matrix_4::operator[](const int pRightSide);
 
 
 	private:

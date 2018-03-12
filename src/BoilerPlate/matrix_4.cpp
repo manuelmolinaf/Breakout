@@ -186,6 +186,14 @@ namespace engine
 		return pOstream;
 	}
 
+	float& matrix_4::operator[](const int pRightSide)
+	{
+		int row = pRightSide % 4;
+		int column = pRightSide / 4;
+
+		return mMatrix[row][column];
+	}
+
 
 	matrix_4 matrix_4::operator=(matrix_4& pRightSide)
 	{
@@ -260,7 +268,149 @@ namespace engine
 
 		return returnMatrix;
 	}
+	
+	float** matrix_4::get_inverse()
+	{
+		matrix_4 matrix, invertedMatrix;
 
+		float determinant;
+
+		for (int row = 0; row < 4; row++)
+		{
+			for (int column = 0; column < 4; column++)
+			{
+				matrix.get_matrix()[row][column] = mMatrix[row][column];
+			}
+		}
+
+		invertedMatrix[0] = matrix[5] * matrix[10] * matrix[15] -
+							matrix[5] * matrix[11] * matrix[14] -
+							matrix[9] * matrix[6] * matrix[15] +
+							matrix[9] * matrix[7] * matrix[14] +
+							matrix[13] * matrix[6] * matrix[11] -
+							matrix[13] * matrix[7] * matrix[10];
+
+		invertedMatrix[1] = -matrix[1] * matrix[10] * matrix[15] +
+							 matrix[1] * matrix[11] * matrix[14] +
+							 matrix[9] * matrix[2] * matrix[15] -
+							 matrix[9] * matrix[3] * matrix[14] -
+							 matrix[13] * matrix[2] * matrix[11] +
+							 matrix[13] * matrix[3] * matrix[10];
+
+		invertedMatrix[2] = matrix[1] * matrix[6] * matrix[15] -
+							matrix[1] * matrix[7] * matrix[14] -
+							matrix[5] * matrix[2] * matrix[15] +
+							matrix[5] * matrix[3] * matrix[14] +
+							matrix[13] * matrix[2] * matrix[7] -
+							matrix[13] * matrix[3] * matrix[6];
+
+		invertedMatrix[3] = -matrix[1] * matrix[6] * matrix[11] +
+							 matrix[1] * matrix[7] * matrix[10] +
+							 matrix[5] * matrix[2] * matrix[11] -
+							 matrix[5] * matrix[3] * matrix[10] -
+							 matrix[9] * matrix[2] * matrix[7] +
+							 matrix[9] * matrix[3] * matrix[6];
+
+		invertedMatrix[4] = -matrix[4] * matrix[10] * matrix[15] +
+							 matrix[4] * matrix[11] * matrix[14] +
+							 matrix[8] * matrix[6] * matrix[15] -
+							 matrix[8] * matrix[7] * matrix[14] -
+							 matrix[12] * matrix[6] * matrix[11] +
+							 matrix[12] * matrix[7] * matrix[10];
+
+		invertedMatrix[5] = matrix[0] * matrix[10] * matrix[15] -
+							matrix[0] * matrix[11] * matrix[14] -
+							matrix[8] * matrix[2] * matrix[15] +
+							matrix[8] * matrix[3] * matrix[14] +
+							matrix[12] * matrix[2] * matrix[11] -
+							matrix[12] * matrix[3] * matrix[10];
+
+		invertedMatrix[6] = -matrix[0] * matrix[6] * matrix[15] +
+							 matrix[0] * matrix[7] * matrix[14] +
+							 matrix[4] * matrix[2] * matrix[15] -
+							 matrix[4] * matrix[3] * matrix[14] -
+							 matrix[12] * matrix[2] * matrix[7] +
+							 matrix[12] * matrix[3] * matrix[6];
+		
+		invertedMatrix[7] = matrix[0] * matrix[6] * matrix[11] -
+							matrix[0] * matrix[7] * matrix[10] -
+							matrix[4] * matrix[2] * matrix[11] +
+							matrix[4] * matrix[3] * matrix[10] +
+							matrix[8] * matrix[2] * matrix[7] -
+							matrix[8] * matrix[3] * matrix[6];
+
+		invertedMatrix[8] = matrix[4] * matrix[9] * matrix[15] -
+							matrix[4] * matrix[11] * matrix[13] -
+							matrix[8] * matrix[5] * matrix[15] +
+							matrix[8] * matrix[7] * matrix[13] +
+							matrix[12] * matrix[5] * matrix[11] -
+							matrix[12] * matrix[7] * matrix[9];
+
+		invertedMatrix[9] = -matrix[0] * matrix[9] * matrix[15] +
+							 matrix[0] * matrix[11] * matrix[13] +
+							 matrix[8] * matrix[1] * matrix[15] -
+							 matrix[8] * matrix[3] * matrix[13] -
+							 matrix[12] * matrix[1] * matrix[11] +
+							 matrix[12] * matrix[3] * matrix[9];
+
+		invertedMatrix[10] = matrix[0] * matrix[5] * matrix[15] -
+							 matrix[0] * matrix[7] * matrix[13] -
+							 matrix[4] * matrix[1] * matrix[15] +
+							 matrix[4] * matrix[3] * matrix[13] +
+							 matrix[12] * matrix[1] * matrix[7] -
+							 matrix[12] * matrix[3] * matrix[5];
+
+		invertedMatrix[11] = -matrix[0] * matrix[5] * matrix[11] +
+							  matrix[0] * matrix[7] * matrix[9] +
+							  matrix[4] * matrix[1] * matrix[11] -
+							  matrix[4] * matrix[3] * matrix[9] -
+							  matrix[8] * matrix[1] * matrix[7] +
+						  	  matrix[8] * matrix[3] * matrix[5];
+
+		invertedMatrix[12] = -matrix[4] * matrix[9] * matrix[14] +
+							  matrix[4] * matrix[10] * matrix[13] +
+							  matrix[8] * matrix[5] * matrix[14] -
+							  matrix[8] * matrix[6] * matrix[13] -
+							  matrix[12] * matrix[5] * matrix[10] +
+							  matrix[12] * matrix[6] * matrix[9];
+
+		invertedMatrix[13] = matrix[0] * matrix[9] * matrix[14] -
+						  	 matrix[0] * matrix[10] * matrix[13] -
+							 matrix[8] * matrix[1] * matrix[14] +
+							 matrix[8] * matrix[2] * matrix[13] +
+							 matrix[12] * matrix[1] * matrix[10] -
+							 matrix[12] * matrix[2] * matrix[9];
+
+		invertedMatrix[14] = -matrix[0] * matrix[5] * matrix[14] +
+							  matrix[0] * matrix[6] * matrix[13] +
+							  matrix[4] * matrix[1] * matrix[14] -
+							  matrix[4] * matrix[2] * matrix[13] -
+							  matrix[12] * matrix[1] * matrix[6] +
+							  matrix[12] * matrix[2] * matrix[5];
+
+		invertedMatrix[15] = matrix[0] * matrix[5] * matrix[10] -
+							 matrix[0] * matrix[6] * matrix[9] -
+							 matrix[4] * matrix[1] * matrix[10] +
+							 matrix[4] * matrix[2] * matrix[9] +
+							 matrix[8] * matrix[1] * matrix[6] -
+		  					 matrix[8] * matrix[2] * matrix[5];
+		
+		
+
+		determinant = matrix[0] * invertedMatrix[0] + matrix[1] * invertedMatrix[4] + matrix[2] * invertedMatrix[8] + matrix[3] * invertedMatrix[12];
+
+		if (determinant == 0) return NULL;
+
+		determinant = 1.0f / determinant;
+
+		for (int i = 0; i < 16; i++)
+		{
+			invertedMatrix[i] *= determinant;
+		}
+			
+
+		return invertedMatrix.get_matrix();
+	}
 
 
 }

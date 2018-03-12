@@ -22,10 +22,12 @@ int main(int argc, char* argv[])
 
 	for (int i = 0; i < 16; i++)
 	{
-		values[i] = i;
+		values[i] = i+1;
 	}
 
 	matrix_4 a = matrix_4(values);
+
+	a[14] = 45;
 
 	std::cout << a;
 	
