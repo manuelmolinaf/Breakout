@@ -25,11 +25,9 @@ int main(int argc, char* argv[])
 		values[i] = i+1;
 	}
 
-	matrix_4 a = matrix_4(values);
-
-	a[14] = 45;
-
-	std::cout << a;
+	matrix_4 a = matrix_4(1,0,2,1,1,3,3,0,1,1,1,2,0,2,0,1);
+	
+	std::cout <<a.get_transpose();
 	
 
 #if _MSC_VER && _DEBUG

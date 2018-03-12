@@ -115,7 +115,7 @@ namespace engine
 	}
 
 
-	float**  matrix_4::get_transpose()
+	matrix_4  matrix_4::get_transpose()
 	{
 		matrix_4 transposedMatrix;
 
@@ -128,7 +128,7 @@ namespace engine
 			}
 		}
 
-		return transposedMatrix.get_matrix();
+		return transposedMatrix;
 	}
 
 	void matrix_4::set_identity()
@@ -269,7 +269,7 @@ namespace engine
 		return returnMatrix;
 	}
 	
-	float** matrix_4::get_inverse()
+	matrix_4 matrix_4::get_inverse()
 	{
 		matrix_4 matrix, invertedMatrix;
 
@@ -409,7 +409,7 @@ namespace engine
 		}
 			
 
-		return invertedMatrix.get_matrix();
+		return invertedMatrix;
 	}
 
 

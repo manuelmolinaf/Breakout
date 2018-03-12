@@ -34,8 +34,8 @@ namespace engine
 		float*  get_row(int pRowNumber);
 		float*  get_column(int pColumnNumber);
 		float** get_matrix();
-		float** get_transpose();
-		float** get_inverse();
+		matrix_4 get_transpose();
+		matrix_4 get_inverse();
 
 		void set_identity();
 
