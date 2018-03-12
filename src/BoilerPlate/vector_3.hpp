@@ -12,10 +12,10 @@ namespace engine
 		static vector_3 Origin;
 
 		/*MEMBERS*/
-		float m_x;
-		float m_y;
-		float m_z;
-		float m_length;
+		float mX;
+		float mY;
+		float mZ;
+		float mLength;
 
 		/*CTOR*/
 		vector_3();

@@ -12,9 +12,9 @@ namespace engine
 		static vector_2 Origin;
 
 		/*MEMBERS*/
-		float m_x;
-		float m_y;
-		float m_length;
+		float mX;
+		float mY;
+		float mLength;
 
 		/*CTOR*/
 		vector_2();

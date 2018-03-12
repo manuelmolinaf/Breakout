@@ -4,6 +4,7 @@
 #define MATRIX_4_HPP
 
 #include "vector_3.hpp"
+#include "vector_4.hpp"
 #include "math_utilities.hpp"
 
 namespace engine
@@ -36,10 +37,14 @@ namespace engine
 		float** get_matrix();
 		matrix_4 get_transpose();
 		matrix_4 get_inverse();
-
 		void set_identity();
-
 		vector_3 get_angle();
+		void translate(vector_4 pTranslationVector);
+		void rotate(float pAngleX, float pAngleY, float pAngleZ);
+		void rotateX(float pAngle);
+		void rotateY(float pAngle);
+		void rotateZ(float pAngle);
+
 
 		
 		matrix_4 operator=(matrix_4& pRightSide);

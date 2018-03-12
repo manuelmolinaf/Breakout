@@ -156,17 +156,17 @@ namespace engine
 
 		if (mMatrix[0][0] == 1.0f || mMatrix[0][0] == -1.0f)
 		{
-			angles.m_x = 0; //pitch
-			angles.m_y = atan2f(mMatrix[0][2], mMatrix[2][3]); //yaw
-			angles.m_z = 0; //roll
+			angles.mX = 0; //pitch
+			angles.mY = atan2f(mMatrix[0][2], mMatrix[2][3]); //yaw
+			angles.mZ = 0; //roll
 
 		}
 		else
 		{
 
-			angles.m_x = (float)asin(mMatrix[1][0]); //pitch
-			angles.m_y = atan2f(-mMatrix[2][0], mMatrix[0][0]); //yaw
-			angles.m_z = atan2f(-mMatrix[1][2], mMatrix[1][1]); //roll
+			angles.mX = (float)asin(mMatrix[1][0]); //pitch
+			angles.mY = atan2f(-mMatrix[2][0], mMatrix[0][0]); //yaw
+			angles.mZ = atan2f(-mMatrix[1][2], mMatrix[1][1]); //roll
 		}
 
 		return angles;
@@ -399,7 +399,18 @@ namespace engine
 
 		determinant = matrix[0] * invertedMatrix[0] + matrix[1] * invertedMatrix[4] + matrix[2] * invertedMatrix[8] + matrix[3] * invertedMatrix[12];
 
-		if (determinant == 0) return NULL;
+		if (determinant == 0)
+		{
+			for (int row = 0; row < 4; row++)
+			{
+				for (int column = 0; column < 4; column++)
+				{
+					invertedMatrix.get_matrix()[row][column] = 0;
+				}
+			}
+			return invertedMatrix;
+
+		}
 
 		determinant = 1.0f / determinant;
 
@@ -411,6 +422,227 @@ namespace engine
 
 		return invertedMatrix;
 	}
+
+
+	matrix_4 matrix_4::operator/(matrix_4& pRightSide)
+	{
+		matrix_4 returnMatrix;
+
+		returnMatrix = *this *  pRightSide.get_inverse();
+
+		return returnMatrix;
+	}
+
+	void matrix_4::translate(vector_4 pTranslationVector)
+	{
+		matrix_4 translationMatrix = matrix_4();
+		matrix_4 resultMatrix;
+
+		for (int row = 0; row < 4; row++)
+		{
+			for (int column = 0; column < 4; column++)
+			{
+				resultMatrix.get_matrix()[row][column] = mMatrix[row][column];
+			}
+		}
+
+		translationMatrix[12] = pTranslationVector.mX;
+		translationMatrix[13] = pTranslationVector.mY;
+		translationMatrix[14] = pTranslationVector.mZ;
+
+		resultMatrix = translationMatrix * resultMatrix;
+
+		for (int row = 0; row < 4; row++)
+		{
+			for (int column = 0; column < 4; column++)
+			{
+				mMatrix[row][column]= resultMatrix.get_matrix()[row][column];
+			}
+		}
+
+	}
+
+	void matrix_4::rotateX(float pAngle)
+	{
+		matrix_4 rotationMatrix = matrix_4();
+		matrix_4 resultMatrix;
+
+		for (int row = 0; row < 4; row++)
+		{
+			for (int column = 0; column < 4; column++)
+			{
+				resultMatrix.get_matrix()[row][column] = mMatrix[row][column];
+			}
+		}
+
+		rotationMatrix[5] = std::cos(-pAngle);
+		rotationMatrix[9] = -std::sin(-pAngle);
+		rotationMatrix[6] = std::sin(-pAngle);
+		rotationMatrix[10] = std::cos(-pAngle);
+		
+		resultMatrix = rotationMatrix* resultMatrix;
+
+		for (int row = 0; row < 4; row++)
+		{
+			for (int column = 0; column < 4; column++)
+			{
+				mMatrix[row][column] = resultMatrix.get_matrix()[row][column];
+			}
+		}
+
+	}
+
+
+	void matrix_4::rotateY(float pAngle)
+	{
+		matrix_4 rotationMatrix = matrix_4();
+		matrix_4 resultMatrix;
+
+		for (int row = 0; row < 4; row++)
+		{
+			for (int column = 0; column < 4; column++)
+			{
+				resultMatrix.get_matrix()[row][column] = mMatrix[row][column];
+			}
+		}
+
+		rotationMatrix[0] = std::cos(-pAngle);
+		rotationMatrix[8] = std::sin(-pAngle);
+		rotationMatrix[2] = -std::sin(-pAngle);
+		rotationMatrix[10] = std::cos(-pAngle);
+
+		resultMatrix = rotationMatrix * resultMatrix;
+
+		for (int row = 0; row < 4; row++)
+		{
+			for (int column = 0; column < 4; column++)
+			{
+				mMatrix[row][column] = resultMatrix.get_matrix()[row][column];
+			}
+		}
+
+	}
+
+
+	void matrix_4::rotateZ(float pAngle)
+	{
+		matrix_4 rotationMatrix = matrix_4();
+		matrix_4 resultMatrix;
+
+		for (int row = 0; row < 4; row++)
+		{
+			for (int column = 0; column < 4; column++)
+			{
+				resultMatrix.get_matrix()[row][column] = mMatrix[row][column];
+			}
+		}
+
+		rotationMatrix[0] = std::cos(-pAngle);
+		rotationMatrix[4] = -std::sin(-pAngle);
+		rotationMatrix[1] = std::sin(-pAngle);
+		rotationMatrix[5] = std::cos(-pAngle);
+
+		resultMatrix = rotationMatrix * resultMatrix;
+
+		for (int row = 0; row < 4; row++)
+		{
+			for (int column = 0; column < 4; column++)
+			{
+				mMatrix[row][column] = resultMatrix.get_matrix()[row][column];
+			}
+		}
+
+	}
+
+	void matrix_4::rotate(float pAngleX, float pAngleY, float pAngleZ)
+	{
+		matrix_4 rotationMatrix = matrix_4();
+		matrix_4 resultMatrix;
+
+		//x rotation
+		for (int row = 0; row < 4; row++)
+		{
+			for (int column = 0; column < 4; column++)
+			{
+				resultMatrix.get_matrix()[row][column] = mMatrix[row][column];
+			}
+		}
+
+		rotationMatrix[5] = std::cos(-pAngleX);
+		rotationMatrix[9] = -std::sin(-pAngleX);
+		rotationMatrix[6] = std::sin(-pAngleX);
+		rotationMatrix[10] = std::cos(-pAngleX);
+
+		resultMatrix = rotationMatrix * resultMatrix;
+
+		for (int row = 0; row < 4; row++)
+		{
+			for (int column = 0; column < 4; column++)
+			{
+				mMatrix[row][column] = resultMatrix.get_matrix()[row][column];
+			}
+		}
+
+		//y rotation
+
+		rotationMatrix = matrix_4();
+
+		for (int row = 0; row < 4; row++)
+		{
+			for (int column = 0; column < 4; column++)
+			{
+				resultMatrix.get_matrix()[row][column] = mMatrix[row][column];
+			}
+		}
+
+		rotationMatrix[0] = std::cos(-pAngleY);
+		rotationMatrix[8] = std::sin(-pAngleY);
+		rotationMatrix[2] = -std::sin(-pAngleY);
+		rotationMatrix[10] = std::cos(-pAngleY);
+
+		resultMatrix = rotationMatrix * resultMatrix;
+
+		for (int row = 0; row < 4; row++)
+		{
+			for (int column = 0; column < 4; column++)
+			{
+				mMatrix[row][column] = resultMatrix.get_matrix()[row][column];
+			}
+		}
+
+
+		//z rotation
+
+		rotationMatrix = matrix_4();
+
+		for (int row = 0; row < 4; row++)
+		{
+			for (int column = 0; column < 4; column++)
+			{
+				resultMatrix.get_matrix()[row][column] = mMatrix[row][column];
+			}
+		}
+
+		rotationMatrix[0] = std::cos(-pAngleZ);
+		rotationMatrix[4] = -std::sin(-pAngleZ);
+		rotationMatrix[1] = std::sin(-pAngleZ);
+		rotationMatrix[5] = std::cos(-pAngleZ);
+
+		resultMatrix = rotationMatrix * resultMatrix;
+
+		for (int row = 0; row < 4; row++)
+		{
+			for (int column = 0; column < 4; column++)
+			{
+				mMatrix[row][column] = resultMatrix.get_matrix()[row][column];
+			}
+		}
+
+
+	}
+
+
+	
 
 
 }
