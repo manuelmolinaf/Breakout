@@ -4,7 +4,6 @@
     <ClCompile Include="App.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="SDLEvent.cpp" />
-    <ClCompile Include="stb_image.c" />
     <ClCompile Include="TimeManager.cpp" />
     <ClCompile Include="matrix_4.cpp">
       <Filter>Engine\Source files</Filter>
@@ -41,6 +40,7 @@
     <ClInclude Include="math_utilities.hpp">
       <Filter>Engine\Header files</Filter>
     </ClInclude>
+    <ClInclude Include="stb_image.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Engine">
@@ -52,5 +52,9 @@
     <Filter Include="Engine\Source files">
       <UniqueIdentifier>{8ac7a341-5c5e-48ec-9ba0-2cd9a4765dfb}</UniqueIdentifier>
     </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="frag.glsl" />
+    <None Include="vertex.glsl" />
   </ItemGroup>
 </Project>

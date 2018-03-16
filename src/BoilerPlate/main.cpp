@@ -9,26 +9,12 @@
 
 // 
 #include "App.hpp"
-#include "matrix_4.hpp"
-
-using namespace engine;
 
 const int WIDTH = 1136;
 const int HEIGHT = 640;
 
 int main(int argc, char* argv[])
 {
-	float values[16];
-
-	for (int i = 0; i < 16; i++)
-	{
-		values[i] = i+1;
-	}
-
-	matrix_4 a = matrix_4(1,0,2,1,1,3,3,0,1,1,1,2,0,2,0,1);
-	
-	std::cout <<a.get_transpose();
-	
 
 #if _MSC_VER && _DEBUG
 	// https://msdn.microsoft.com/en-us/library/x98tx3cf.aspx
