@@ -203,10 +203,10 @@ namespace Engine
 			0.5f,  0.5f, 0.0f,  // top right
 			0.5f, -0.5f, 0.0f,  // bottom right
 			-0.5f,  0.5f, 0.0f, // top left 
-								// second triangle
-								0.5f, -0.5f, 0.0f,  // bottom right
-								-0.5f, -0.5f, 0.0f, // bottom left
-								-0.5f,  0.5f, 0.0f  // top left
+			// second triangle
+			0.5f, -0.5f, 0.0f,  // bottom right
+			-0.5f, -0.5f, 0.0f, // bottom left
+			-0.5f,  0.5f, 0.0f  // top left
 		};
 
 		glGenVertexArrays(1, &VertexArrayObject);
@@ -235,8 +235,8 @@ namespace Engine
 		// VAOs requires a call to glBindVertexArray anyways so we generally don't unbind VAOs (nor VBOs) when it's not directly necessary.
 		glBindVertexArray(0);
 
-		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-		//glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+		//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
 
 		SDL_Event event;

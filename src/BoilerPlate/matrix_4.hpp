@@ -34,7 +34,7 @@ namespace engine
 
 		float*  get_row(int pRowNumber);
 		float*  get_column(int pColumnNumber);
-		float** get_matrix();
+		float* get_matrix();
 		matrix_4 get_transpose();
 		matrix_4 get_inverse();
 		void set_identity();
@@ -61,11 +61,10 @@ namespace engine
 
 		//private members
 
-		float** mMatrix;
+		float mMatrix[16];
 
 		//private functions
 
-		void initialize_matrix();
 
 
 	};
