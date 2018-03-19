@@ -1,15 +1,13 @@
+
 #include "App.hpp"
 #include <iostream>
 #include <algorithm>
-
-// OpenGL includes
-#include <GL/glew.h>
-#include <SDL2/SDL_opengl.h>
 
 namespace Engine
 {
 	const float DESIRED_FRAME_RATE = 60.0f;
 	const float DESIRED_FRAME_TIME = 1.0f / DESIRED_FRAME_RATE;
+
 
 	App::App(const std::string& title, const int width, const int height)
 		: m_title(title)
@@ -25,6 +23,10 @@ namespace Engine
 
 	App::~App()
 	{
+		glDeleteBuffers(1, &m_magicDraw.Renderer.mVertexBufferObject);
+		glDeleteVertexArrays(1, &m_magicDraw.Renderer.mVertexArrayObject);
+		glDeleteProgram(m_magicDraw.Renderer.mProgramID);
+
 		CleanupSDL();
 	}
 
@@ -37,6 +39,9 @@ namespace Engine
 		}
 
 		m_state = GameState::RUNNING;
+
+		m_magicDraw.Renderer.mProgramID = m_magicDraw.Texture.LoadShaders("vertex.glsl", "frag.glsl");
+		
 
 		SDL_Event event;
 		while (m_state == GameState::RUNNING)
@@ -67,7 +72,8 @@ namespace Engine
 
 		// Setup the viewport
 		//
-		SetupViewport();
+
+		//SetupViewport();
 
 		// Change game state
 		//
@@ -77,12 +83,23 @@ namespace Engine
 	}
 
 	void App::OnKeyDown(SDL_KeyboardEvent keyBoardEvent)
-	{		
+	{
 		switch (keyBoardEvent.keysym.scancode)
 		{
-		default:			
-			SDL_Log("%S was pressed.", keyBoardEvent.keysym.scancode);
-			break;
+
+			case 'F':
+
+			case 'f':
+				if (m_magicDraw.Renderer.mPolygonFill)
+					m_magicDraw.Renderer.mPolygonFill = false;
+				else
+					m_magicDraw.Renderer.mPolygonFill = true;
+
+				break;
+
+			default:
+				SDL_Log("%S was pressed.", keyBoardEvent.keysym.scancode);
+				break;
 		}
 	}
 
@@ -120,20 +137,22 @@ namespace Engine
 		m_lastFrameTime = m_timer->GetElapsedTimeInSeconds();
 
 		m_nUpdates++;
+
+		if(m_magicDraw.Renderer.mPolygonFill)
+			glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+		else
+			glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 	}
 
 	void App::Render()
 	{
 		glClearColor(0.1f, 0.1f, 0.15f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
-
-		glBegin(GL_LINE_LOOP);
-		glVertex2f(50.0, 50.0);
-		glVertex2f(50.0, -50.0);
-		glVertex2f(-50.0, -50.0);
-		glVertex2f(-50.0, 50.0);
-		glEnd();
-
+		
+		glUseProgram(m_magicDraw.Renderer.mProgramID);
+		glBindVertexArray(m_magicDraw.Renderer.mVertexArrayObject);
+		glDrawArrays(GL_TRIANGLES, 0, 6);
+		
 		SDL_GL_SwapWindow(m_mainWindow);
 	}
 
@@ -147,12 +166,18 @@ namespace Engine
 			return false;
 		}
 
+		//depricated code is disabled
+		SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
+
+		SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
+		SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 2);
+
 		SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 		SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
 
-		Uint32 flags =  SDL_WINDOW_OPENGL     | 
-						SDL_WINDOW_SHOWN      | 
-						SDL_WINDOW_RESIZABLE;
+		Uint32 flags = SDL_WINDOW_OPENGL |
+			SDL_WINDOW_SHOWN |
+			SDL_WINDOW_RESIZABLE;
 
 		m_mainWindow = SDL_CreateWindow(
 			m_title.c_str(),
@@ -206,6 +231,7 @@ namespace Engine
 
 	bool App::GlewInit()
 	{
+		glewExperimental = GL_TRUE;
 		GLenum err = glewInit();
 		if (GLEW_OK != err)
 		{
@@ -233,7 +259,7 @@ namespace Engine
 		m_width = width;
 		m_height = height;
 
-		SetupViewport();
+		//SetupViewport();
 	}
 
 	void App::OnExit()
