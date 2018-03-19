@@ -16,7 +16,7 @@ namespace engine
 {
 	namespace math
 	{
-		class math_utilities
+		struct math_utilities
 		{
 
 		public:
