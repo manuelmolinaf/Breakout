@@ -19,7 +19,7 @@ namespace engine
 		~renderer();
 		
 		void load_textures(const char* pTexturePaths[]);
-		void load_vertices(/*char* pVertices[]*/);
+		void load_vertices();
 		void initialize_program_id();
 		void render();
 		void toggle_polygon_mode();
@@ -29,9 +29,10 @@ namespace engine
 
 		bool mPolygonMode;
 
-		GLuint VertexArrayObject;
-		GLuint VertexBufferObject;
-		GLuint ProgramID;
+		GLuint mVertexArrayObject;
+		GLuint mVertexBufferObject;
+		GLuint mElementsBufferObject;
+		GLuint mProgramID;
 
 		shader_utilities mShaderUtilities;
 

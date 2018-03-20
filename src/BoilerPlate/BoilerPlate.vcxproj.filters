@@ -29,6 +29,9 @@
     <ClCompile Include="texture.cpp">
       <Filter>Engine\Source files</Filter>
     </ClCompile>
+    <ClCompile Include="error_message_manager.cpp">
+      <Filter>Engine\Source files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.hpp" />
@@ -57,6 +60,12 @@
       <Filter>Engine\Header files</Filter>
     </ClInclude>
     <ClInclude Include="texture.hpp">
+      <Filter>Engine\Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="error_message_manager.hpp">
+      <Filter>Engine\Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="vertex.hpp">
       <Filter>Engine\Header files</Filter>
     </ClInclude>
   </ItemGroup>
