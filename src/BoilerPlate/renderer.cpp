@@ -1,9 +1,9 @@
 #include "renderer.hpp"
-#include "vertex.hpp"
+
 
 namespace engine
 {
-	vertex vertices[] = 
+	float vertices[][3] = 
 	{
 	{  0.1f,  0.2f, 0.0f  },  // top right 0
 	{  0.1f, -0.2f, 0.0f  },  // bottom right 1
