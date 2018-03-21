@@ -65,6 +65,21 @@
     <ClInclude Include="error_message_manager.hpp">
       <Filter>Engine\Header files</Filter>
     </ClInclude>
+    <ClInclude Include="IUpdate.hpp">
+      <Filter>Engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="UniqueID.hpp">
+      <Filter>Engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="IRender.hpp">
+      <Filter>Engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.hpp">
+      <Filter>Engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="Component.hpp">
+      <Filter>Engine\core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Engine">
@@ -76,9 +91,30 @@
     <Filter Include="Engine\Source files">
       <UniqueIdentifier>{8ac7a341-5c5e-48ec-9ba0-2cd9a4765dfb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\components">
+      <UniqueIdentifier>{f4c30cbe-ccc0-41b8-8c40-c460e74d5593}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\core">
+      <UniqueIdentifier>{382395da-72c9-4f7a-aaaf-196ef6512dd2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\math">
+      <UniqueIdentifier>{ecd74376-f968-487f-b4f1-942f79297d92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\shaders">
+      <UniqueIdentifier>{ff34a8c8-df11-48b8-b7d0-5afe922b2956}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\utils">
+      <UniqueIdentifier>{3471b178-0eb1-4cfb-a9e8-6f18ae5de441}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game">
+      <UniqueIdentifier>{ecd85c71-f093-45bf-a474-240b30c4235b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="frag.glsl" />
     <None Include="vertex.glsl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="test.png" />
   </ItemGroup>
 </Project>
