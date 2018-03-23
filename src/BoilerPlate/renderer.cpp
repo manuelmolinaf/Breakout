@@ -32,7 +32,7 @@ namespace engine
 	{
 		mProgramID = mShaderUtilities.LoadShaders("vertex.glsl", "frag.glsl");
 		texture test;
-		test.initialize_texture("test.png");
+		test.initialize_texture("game/assets/block.png");
 		mTextures[0] = test;
 	}
 
@@ -106,7 +106,7 @@ namespace engine
 		//glUseProgram(mProgramID);
 
 		// Remember this needs to be set after the program is activated
-		glUniform1i(glGetUniformLocation(mProgramID, "test"), 0);
+		glUniform1i(glGetUniformLocation(mProgramID, "block"), 0);
 		
 		
 

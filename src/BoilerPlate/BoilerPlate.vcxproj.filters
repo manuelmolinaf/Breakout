@@ -131,5 +131,6 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="test.png" />
+    <Image Include="game\assets\block.png" />
   </ItemGroup>
 </Project>
