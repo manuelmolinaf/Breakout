@@ -3,24 +3,24 @@
 
 namespace engine
 {
-	float vertices[][8] = 
+	float vertices[] = 
 	{
-	{ 0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 1.0f, }, //0
-	{ 0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 0.0f, }, //1
-	{ -0.5f, -0.5f, 0.0f,  0.0f, 0.0f, 1.0f,   0.0f, 0.0f, }, //2 
-	{ -0.5f,  0.5f, 0.0f,  1.0f, 1.0f, 0.0f,   0.0f, 1.0f }, //3 
+	 0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 1.0f,  //0
+	 0.5f,  -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 0.0f,  //1
+	 -0.5f, -0.5f, 0.0f,  0.0f, 0.0f, 1.0f,   0.0f, 0.0f,  //2 
+	 -0.5f,  0.5f, 0.0f,  1.0f, 1.0f, 0.0f,   0.0f, 1.0f,  //3 
 	};
 
 	int indices[] = {0,2,3,0,1,2};
 
 
-	renderer::renderer()
+	game::game()
 	{
 		mPolygonMode = true;
 
 	}
 
-	renderer::~renderer()
+	game::~game()
 	{
 		glDeleteBuffers(1, &mVertexBufferObject);
 		glDeleteVertexArrays(1, &mVertexArrayObject);
@@ -28,7 +28,7 @@ namespace engine
 
 	}
 
-	void renderer::initialize_program_id()
+	void game::initialize_program_id()
 	{
 		mProgramID = mShaderUtilities.LoadShaders("vertex.glsl", "frag.glsl");
 		texture test;
@@ -36,7 +36,7 @@ namespace engine
 		mTextures[0] = test;
 	}
 
-	void renderer::load_textures(const char* pTexturePaths[])
+	void game::load_textures(const char* pTexturePaths[])
 	{
 		texture init;
 		for (int i = 0; i < sizeof(pTexturePaths); i++)
@@ -46,24 +46,23 @@ namespace engine
 		}
 	}
 
-	void renderer::render()
+	void game::render()
 	{
 		glUseProgram(mProgramID);
-		//glBindVertexArray(mVertexArrayObject);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mElementsBufferObject);
-		//glDrawElements(GL_TRIANGLES, sizeof(indices), GL_UNSIGNED_INT, (void*)0);
+		
 
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, mTextures[0].get_texture());
 
 
 		glBindVertexArray(mVertexArrayObject);
-		//glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+
 		glDrawElements(GL_TRIANGLES, sizeof(indices), GL_UNSIGNED_INT, (void*)0);
 
 	}
 
-	void renderer::load_vertices()
+	void game::load_vertices()
 	{
 		// set up vertex data (and buffer(s)) and configure vertex attributes
 		// ------------------------------------------------------------------
@@ -114,7 +113,7 @@ namespace engine
 		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	}
 
-	void renderer::toggle_polygon_mode()
+	void game::toggle_polygon_mode()
 	{
 		if (mPolygonMode)
 		{
