@@ -40,10 +40,18 @@ namespace engine
 		void set_identity();
 		vector_3 get_angle();
 		void translate(vector_4 pTranslationVector);
+
 		void rotate(float pAngleX, float pAngleY, float pAngleZ);
 		void rotateX(float pAngle);
 		void rotateY(float pAngle);
 		void rotateZ(float pAngle);
+
+		void make_ortho(const float &pMinimumXAxis, const float &pMaximumXAxis, const float &pMinimumYAxis,
+						const float &pMaximumYAxis, const float &pMinimumZAxis, const float &pMaximumZAxis);
+
+		void make_perspective(const float &pFieldOfView, const float &pNearClippingPlane, const float &pFarClippingPlane);
+
+		void make_look_at(vector_3 pLookingPosition, vector_3 pTargetPosition);
 
 
 		

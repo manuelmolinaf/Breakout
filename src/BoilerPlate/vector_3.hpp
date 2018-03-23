@@ -26,6 +26,7 @@ namespace engine
 		float length() const;
 		float squared_length() const;
 		float normalize();
+		vector_3 cross_product(const vector_3&, const vector_3&);
 
 		/*OPERATORS*/
 		vector_3& operator= (const vector_3&);

@@ -1,10 +1,13 @@
 #include "matrix_4.hpp"
+#include "math_utilities.hpp"
+#include "vector_3.hpp"
+
 #include <math.h>
 #include <iostream>
 
 namespace engine
 {
-
+	math::math_utilities mathTool;
 
 
 	matrix_4::matrix_4()
@@ -581,6 +584,68 @@ namespace engine
 
 		*this = *this * rotationMatrix;
 
+
+	}
+
+	void matrix_4::make_ortho(const float &pMinimumXAxis, const float &pMaximumXAxis, const float &pMinimumYAxis,
+							  const float &pMaximumYAxis, const float &pMinimumZAxis, const float &pMaximumZAxis)
+	{
+		set_identity();
+
+		float inverseXAxesDifference = 1 / (pMaximumXAxis - pMinimumXAxis);
+		float inverseYAxesDifference = 1 / (pMaximumYAxis - pMinimumYAxis);
+		float inverseZAxesDifference = 1 / (pMaximumZAxis - pMinimumZAxis);
+
+		mMatrix[0]  = 2.0f * inverseXAxesDifference;
+		mMatrix[5]  = 2.0f * inverseYAxesDifference;
+		mMatrix[10] = -2.0f * inverseZAxesDifference;
+		mMatrix[12] = -(pMaximumXAxis + pMinimumXAxis) * inverseXAxesDifference;
+		mMatrix[13] = -(pMaximumYAxis + pMinimumYAxis) * inverseYAxesDifference;
+		mMatrix[14] = -(pMaximumZAxis + pMinimumZAxis) * inverseZAxesDifference;
+	}
+
+
+	void matrix_4::make_perspective(const float &pFieldOfView, const float &pNearClippingPlane, const float &pFarClippingPlane)
+	{
+
+		float scale = 1 / (tan(pFieldOfView * 0.5) * mathTool.degrees_to_radians(1));
+
+		float inverseClippingPlaneDifference = 1 / (pFarClippingPlane - pNearClippingPlane);
+
+		mMatrix[0]  = scale;
+		mMatrix[5]  = scale;
+		mMatrix[10] = -pFarClippingPlane * inverseClippingPlaneDifference;
+		mMatrix[11] = -1;
+		mMatrix[14] = -pFarClippingPlane * pNearClippingPlane * inverseClippingPlaneDifference;
+		mMatrix[15] = 0;
+
+	}
+
+	void matrix_4::make_look_at(vector_3 pLookingPosition, vector_3 pTargetPosition)
+	{
+		vector_3 forward(pLookingPosition - pTargetPosition);
+		forward.normalize();
+
+		vector_3 tmp(0.0f, 1.0f, 0.0f);
+		tmp.normalize();
+
+		vector_3 right;
+		right = tmp.cross_product(tmp, forward);
+		vector_3 up;
+		up = tmp.cross_product(forward, right);
+
+		mMatrix[0]  = right.mX;
+		mMatrix[1]  = up.mX;
+		mMatrix[2]  = forward.mX;
+		mMatrix[3]  = pLookingPosition.mX;
+		mMatrix[4]  = right.mY;
+		mMatrix[5]  = up.mY;
+		mMatrix[6]  = forward.mY;
+		mMatrix[7]  = pLookingPosition.mY;
+		mMatrix[8]  = right.mZ;
+		mMatrix[9]  = up.mZ;
+		mMatrix[10] = forward.mZ;
+		mMatrix[11] = pLookingPosition.mZ;
 
 	}
 

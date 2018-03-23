@@ -5,34 +5,32 @@
 #include <string>
 
 //
-#include "IUpdate.hpp"
+#include "i_update.hpp"
 
 namespace engine
 {
 	namespace core
 	{
 		class game_object;
-		class component : iupdate
+		class component : i_update
 		{
-			public:
-				/*
-				 * PUBLIC FUNCTIONS
-				 */
-				explicit component(const std::string& name);
-				~component();
-				void Update(double deltaTime) override;
+		public:
 
-				void SetOwner(game_object* owner) { m_owner = owner; }
-				game_object* GetOwner() const { return m_owner; }
-				std::string GetName() const { return m_name; }
+			//public
+			explicit component(const std::string& name);
+			~component();
+			void update(double deltaTime) override;
+
+			//getters
+			void set_owner(game_object* owner) { mOwner = owner; }
+			game_object* get_owner() const { return mOwner; }
+			std::string get_name() const { return mName; }
 		protected:
-			game_object * m_owner;
-			std::string m_name;
+
+			//memebers
+			game_object*	mOwner;
+			std::string	mName;
 		};
 	}
 }
-
-#endif _COMPONENT_HPP_
-
-
-
+#endif // !_COMPONENT_HPP_

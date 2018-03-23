@@ -195,4 +195,14 @@ namespace engine
 
 		return vector_3(xValue, yValue, zValue);
 	}
+
+	vector_3 vector_3::cross_product(const vector_3& pLeftSide, const vector_3& pRightSide)
+	{
+		vector_3 resultVector;
+		resultVector.mX = pLeftSide.mY * pRightSide.mZ - pLeftSide.mZ * pRightSide.mY;
+		resultVector.mY = pLeftSide.mZ * pRightSide.mX - pLeftSide.mX * pRightSide.mZ;
+		resultVector.mZ = pLeftSide.mX * pRightSide.mY - pLeftSide.mY * pRightSide.mX;
+
+		return resultVector;
+	}
 }
