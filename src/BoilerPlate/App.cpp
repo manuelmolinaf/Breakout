@@ -2,14 +2,16 @@
 #include <iostream>
 #include <algorithm>
 
-// OpenGL includes
-#include <GL/glew.h>
-#include <SDL2/SDL_opengl.h>
+#include "renderer.hpp"
 
-namespace Engine
+namespace engine
 {
 	const float DESIRED_FRAME_RATE = 60.0f;
 	const float DESIRED_FRAME_TIME = 1.0f / DESIRED_FRAME_RATE;
+
+	
+	engine::renderer rend;
+	
 
 	App::App(const std::string& title, const int width, const int height)
 		: m_title(title)
@@ -37,6 +39,11 @@ namespace Engine
 		}
 
 		m_state = GameState::RUNNING;
+
+		rend.initialize_program_id();
+
+		rend.load_vertices();
+
 
 		SDL_Event event;
 		while (m_state == GameState::RUNNING)
@@ -67,7 +74,8 @@ namespace Engine
 
 		// Setup the viewport
 		//
-		SetupViewport();
+
+		//SetupViewport();
 
 		// Change game state
 		//
@@ -77,11 +85,14 @@ namespace Engine
 	}
 
 	void App::OnKeyDown(SDL_KeyboardEvent keyBoardEvent)
-	{		
+	{
 		switch (keyBoardEvent.keysym.scancode)
 		{
-		default:			
+		default:
 			SDL_Log("%S was pressed.", keyBoardEvent.keysym.scancode);
+			break;
+		case SDL_SCANCODE_T:
+			rend.toggle_polygon_mode();
 			break;
 		}
 	}
@@ -126,14 +137,9 @@ namespace Engine
 	{
 		glClearColor(0.1f, 0.1f, 0.15f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
-
-		glBegin(GL_LINE_LOOP);
-		glVertex2f(50.0, 50.0);
-		glVertex2f(50.0, -50.0);
-		glVertex2f(-50.0, -50.0);
-		glVertex2f(-50.0, 50.0);
-		glEnd();
-
+		
+		rend.render();
+		
 		SDL_GL_SwapWindow(m_mainWindow);
 	}
 
@@ -147,12 +153,18 @@ namespace Engine
 			return false;
 		}
 
+		//depricated code is disabled
+		SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
+
+		SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
+		SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 2);
+
 		SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 		SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
 
-		Uint32 flags =  SDL_WINDOW_OPENGL     | 
-						SDL_WINDOW_SHOWN      | 
-						SDL_WINDOW_RESIZABLE;
+		Uint32 flags = SDL_WINDOW_OPENGL |
+			SDL_WINDOW_SHOWN |
+			SDL_WINDOW_RESIZABLE;
 
 		m_mainWindow = SDL_CreateWindow(
 			m_title.c_str(),
@@ -206,6 +218,7 @@ namespace Engine
 
 	bool App::GlewInit()
 	{
+		glewExperimental = GL_TRUE;
 		GLenum err = glewInit();
 		if (GLEW_OK != err)
 		{
@@ -233,7 +246,7 @@ namespace Engine
 		m_width = width;
 		m_height = height;
 
-		SetupViewport();
+		//SetupViewport();
 	}
 
 	void App::OnExit()

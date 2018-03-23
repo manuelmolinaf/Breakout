@@ -34,16 +34,24 @@ namespace engine
 
 		float*  get_row(int pRowNumber);
 		float*  get_column(int pColumnNumber);
-		float** get_matrix();
+		float* get_matrix();
 		matrix_4 get_transpose();
 		matrix_4 get_inverse();
 		void set_identity();
 		vector_3 get_angle();
 		void translate(vector_4 pTranslationVector);
+
 		void rotate(float pAngleX, float pAngleY, float pAngleZ);
 		void rotateX(float pAngle);
 		void rotateY(float pAngle);
 		void rotateZ(float pAngle);
+
+		void make_ortho(const float &pMinimumXAxis, const float &pMaximumXAxis, const float &pMinimumYAxis,
+						const float &pMaximumYAxis, const float &pMinimumZAxis, const float &pMaximumZAxis);
+
+		void make_perspective(const float &pFieldOfView, const float &pNearClippingPlane, const float &pFarClippingPlane);
+
+		void make_look_at(vector_3 pLookingPosition, vector_3 pTargetPosition);
 
 
 		
@@ -61,11 +69,10 @@ namespace engine
 
 		//private members
 
-		float** mMatrix;
+		float mMatrix[16];
 
 		//private functions
 
-		void initialize_matrix();
 
 
 	};
