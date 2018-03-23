@@ -14,11 +14,13 @@ namespace engine
 	public:
 
 		texture();
-		texture(const char* texture_path);
+		//texture(const char* texture_path);
 
-		GLuint LoadTexture(const char* texture_path);
+		GLuint load_texture(const char* texture_path);
 
 		GLuint get_texture();
+
+		void initialize_texture(const char* texture_path);
 
 	private:
 

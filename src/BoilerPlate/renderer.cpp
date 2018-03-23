@@ -3,25 +3,15 @@
 
 namespace engine
 {
-	float vertices[][3] = 
+	float vertices[][8] = 
 	{
-	{  0.0f,  0.0f, 0.0f  }, //0
-	{  0.0f,  1.0f, 0.0f  }, //1
-	{  1.0f,  0.0f, 0.0f  }, //2 
-	{  0.0f, -1.0f, 0.0f  }, //3 
-	{ -1.0f,  0.0f, 0.0f  }, //4
-	{  1.0f,  1.0f, 0.0f  }, //5
-	{  1.0f, -1.0f, 0.0f  }, //6
-	{ -1.0f, -1.0f, 0.0f  }, //7
-	{ -1.0f,  1.0f, 0.0f  }, //8
-	{  0.5f,  0.5f, 0.0f  }, //9
-	{  0.5f, -0.5f, 0.0f  }, //10
-	{ -0.5f, -0.5f, 0.0f  }, //11
-	{ -0.5f,  0.5f, 0.0f  }  //12
-
+	{ 0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 1.0f, }, //0
+	{ 0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 0.0f, }, //1
+	{ -0.5f, -0.5f, 0.0f,  0.0f, 0.0f, 1.0f,   0.0f, 0.0f, }, //2 
+	{ -0.5f,  0.5f, 0.0f,  1.0f, 1.0f, 0.0f,   0.0f, 1.0f }, //3 
 	};
 
-	int indices[] = {8, 12, 4, 0, 12, 1, 0, 1, 9, 5, 9, 2, 4, 11, 7, 0, 11, 3, 0, 10, 3, 2, 10, 6};
+	int indices[] = {0,2,3,0,1,2};
 
 
 	renderer::renderer()
@@ -41,22 +31,36 @@ namespace engine
 	void renderer::initialize_program_id()
 	{
 		mProgramID = mShaderUtilities.LoadShaders("vertex.glsl", "frag.glsl");
+		texture test;
+		test.initialize_texture("test.png");
+		mTextures[0] = test;
 	}
 
 	void renderer::load_textures(const char* pTexturePaths[])
 	{
+		texture init;
 		for (int i = 0; i < sizeof(pTexturePaths); i++)
 		{
-			mTextures[i] = texture(pTexturePaths[i]);
+			init.initialize_texture(pTexturePaths[i]);
+			mTextures[i] = init;
 		}
 	}
 
 	void renderer::render()
 	{
 		glUseProgram(mProgramID);
-		glBindVertexArray(mVertexArrayObject);
+		//glBindVertexArray(mVertexArrayObject);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mElementsBufferObject);
+		//glDrawElements(GL_TRIANGLES, sizeof(indices), GL_UNSIGNED_INT, (void*)0);
+
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_2D, mTextures[0].get_texture());
+
+
+		glBindVertexArray(mVertexArrayObject);
+		//glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 		glDrawElements(GL_TRIANGLES, sizeof(indices), GL_UNSIGNED_INT, (void*)0);
+
 	}
 
 	void renderer::load_vertices()
@@ -78,27 +82,34 @@ namespace engine
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mElementsBufferObject);
 		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
-
-		glVertexAttribPointer(
-			0,                  // attribute 0. No particular reason for 0, but must match the layout in the shader.
-			3,                  // size
-			GL_FLOAT,           // type
-			GL_FALSE,           // normalized?
-			3 * sizeof(float),  // stride
-			(void*)0            // array buffer offset
-		);
-
-
+		// vertex position attribute
+		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
 		glEnableVertexAttribArray(0);
+
+		// color attribute
+		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
+		glEnableVertexAttribArray(1);
+
+		// texture coord attribute
+		glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
+		glEnableVertexAttribArray(2);
+
 
 		// note that this is allowed, the call to glVertexAttribPointer registered VBO as the vertex attribute's bound vertex buffer object so afterwards we can safely unbind
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+		//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 
 
 		// You can unbind the VAO afterwards so other VAO calls won't accidentally modify this VAO, but this rarely happens. Modifying other
 		// VAOs requires a call to glBindVertexArray anyways so we generally don't unbind VAOs (nor VBOs) when it's not directly necessary.
 		glBindVertexArray(0);
+
+		//glUseProgram(mProgramID);
+
+		// Remember this needs to be set after the program is activated
+		glUniform1i(glGetUniformLocation(mProgramID, "test"), 0);
+		
+		
 
 		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	}
@@ -117,5 +128,4 @@ namespace engine
 			mPolygonMode = true;
 		}
 	}
-
 }

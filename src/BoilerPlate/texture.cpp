@@ -12,12 +12,12 @@ namespace engine
 
 	}
 
-	texture::texture(const char* texture_path)
+	/*texture::texture(const char* texture_path)
 	{
-		mTexture = LoadTexture(texture_path);
+		mTexture = load_texture(texture_path);
 	}
-
-	GLuint texture::LoadTexture(const char * texture_path)
+*/
+	GLuint texture::load_texture(const char * texture_path)
 	{
 		unsigned int texture;
 		glGenTextures(1, &texture);
@@ -29,6 +29,7 @@ namespace engine
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
 		int width, height, nrChannels;
+		stbi_set_flip_vertically_on_load(true);
 
 		// Load the texture
 		unsigned char *data = stbi_load(texture_path, &width, &height, &nrChannels, 0);
@@ -50,5 +51,10 @@ namespace engine
 	GLuint texture::get_texture()
 	{
 		return mTexture;
+	}
+
+	void texture::initialize_texture(const char* texture_path)
+	{
+		mTexture = load_texture(texture_path);
 	}
 }
