@@ -14,13 +14,13 @@ namespace engine
 	int indices[] = {0,2,3,0,1,2};
 
 
-	game::game()
+	renderer::renderer()
 	{
 		mPolygonMode = true;
 
 	}
 
-	game::~game()
+	renderer::~renderer()
 	{
 		glDeleteBuffers(1, &mVertexBufferObject);
 		glDeleteVertexArrays(1, &mVertexArrayObject);
@@ -28,7 +28,7 @@ namespace engine
 
 	}
 
-	void game::initialize_program_id()
+	void renderer::initialize_program_id()
 	{
 		mProgramID = mShaderUtilities.LoadShaders("vertex.glsl", "frag.glsl");
 		texture test;
@@ -36,7 +36,7 @@ namespace engine
 		mTextures[0] = test;
 	}
 
-	void game::load_textures(const char* pTexturePaths[])
+	void renderer::load_textures(const char* pTexturePaths[])
 	{
 		texture init;
 		for (int i = 0; i < sizeof(pTexturePaths); i++)
@@ -46,7 +46,7 @@ namespace engine
 		}
 	}
 
-	void game::render()
+	void renderer::render()
 	{
 		glUseProgram(mProgramID);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mElementsBufferObject);
@@ -62,7 +62,7 @@ namespace engine
 
 	}
 
-	void game::load_vertices()
+	void renderer::load_vertices()
 	{
 		// set up vertex data (and buffer(s)) and configure vertex attributes
 		// ------------------------------------------------------------------
@@ -113,7 +113,7 @@ namespace engine
 		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	}
 
-	void game::toggle_polygon_mode()
+	void renderer::toggle_polygon_mode()
 	{
 		if (mPolygonMode)
 		{

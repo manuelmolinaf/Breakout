@@ -11,12 +11,12 @@ const int MAX_TEXTURES = 16;
 namespace engine
 {
 
-	class game
+	class renderer
 	{
 	public:
 
-		game();
-		~game();
+		renderer();
+		~renderer();
 		
 		void load_textures(const char* pTexturePaths[]);
 		void load_vertices();

@@ -10,7 +10,7 @@ namespace engine
 	const float DESIRED_FRAME_TIME = 1.0f / DESIRED_FRAME_RATE;
 
 	
-	engine::game rend;
+	renderer rend;
 	
 
 	App::App(const std::string& title, const int width, const int height)
