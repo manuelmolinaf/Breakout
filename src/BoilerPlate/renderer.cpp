@@ -30,7 +30,7 @@ namespace engine
 
 	void renderer::initialize_program_id()
 	{
-		mProgramID = mShaderUtilities.LoadShaders("vertex.glsl", "frag.glsl");
+		mProgramID = mShaderUtilities.LoadShaders("engine/shaders/vertex.glsl", "engine/shaders/frag.glsl");
 		texture test;
 		test.initialize_texture("game/assets/block.png");
 		mTextures[0] = test;
