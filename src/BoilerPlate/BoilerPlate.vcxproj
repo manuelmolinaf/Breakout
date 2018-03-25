@@ -217,7 +217,11 @@ copy /Y "$(SolutionDir)\Externals\SDL2-2.0.4\lib\x64\SDL2.dll" "$(TargetDir)SDL2
     <ClInclude Include="vector_4.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="game\assets\background.jpg" />
+    <Image Include="game\assets\ball.png" />
     <Image Include="game\assets\block.png" />
+    <Image Include="game\assets\block_solid.png" />
+    <Image Include="game\assets\paddle.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="engine\shaders\frag.glsl" />
