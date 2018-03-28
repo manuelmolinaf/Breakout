@@ -22,12 +22,12 @@ namespace engine
 			~game_object();
 
 			//public
-			void AttachComponent(component*);
-			void RemoveComponent(component*);
-			void AddChild(game_object*);
-			void RemoveChild(game_object*);
+			void attach_component(component*);
+			void remove_component(component*);
+			void add_child(game_object*);
+			void remove_child(game_object*);
 			void update(double deltaTime) override;
-			void Render() override;
+			void render() override;
 
 			//getters
 			std::vector<component*>GetComponents() const { return m_components; }
@@ -35,7 +35,7 @@ namespace engine
 			game_object* GetParent() const { return m_parent; }
 
 			template<typename T>
-			T* GetComponent()
+			T* get_component()
 			{
 				// If no components have been attached then return nothing
 				//

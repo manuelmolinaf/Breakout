@@ -2,7 +2,6 @@
 #include <iostream>
 #include <algorithm>
 
-#include "renderer.hpp"
 
 namespace engine
 {
@@ -10,7 +9,7 @@ namespace engine
 	const float DESIRED_FRAME_TIME = 1.0f / DESIRED_FRAME_RATE;
 
 	
-	renderer rend;
+	
 	
 
 	App::App(const std::string& title, const int width, const int height)
@@ -40,9 +39,8 @@ namespace engine
 
 		m_state = GameState::RUNNING;
 
-		rend.initialize_program_id();
+		m_game.execute();
 
-		rend.load_vertices();
 
 
 		SDL_Event event;
@@ -92,7 +90,7 @@ namespace engine
 			SDL_Log("%S was pressed.", keyBoardEvent.keysym.scancode);
 			break;
 		case SDL_SCANCODE_T:
-			rend.toggle_polygon_mode();
+			m_game.mInputManager.SetT(true);
 			break;
 		}
 	}
@@ -103,6 +101,9 @@ namespace engine
 		{
 		case SDL_SCANCODE_ESCAPE:
 			OnExit();
+			break;
+		case SDL_SCANCODE_T:
+			m_game.mInputManager.SetT(false);
 			break;
 		default:
 			//DO NOTHING
@@ -116,6 +117,7 @@ namespace engine
 
 		// Update code goes here
 		//
+		m_game.update();
 
 		double endTime = m_timer->GetElapsedTimeInSeconds();
 		double nextTimeFrame = startTime + DESIRED_FRAME_TIME;
@@ -138,7 +140,7 @@ namespace engine
 		glClearColor(0.1f, 0.1f, 0.15f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 		
-		rend.render();
+		m_game.render();
 		
 		SDL_GL_SwapWindow(m_mainWindow);
 	}

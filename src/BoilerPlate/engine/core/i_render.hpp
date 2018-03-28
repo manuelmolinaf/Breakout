@@ -11,7 +11,7 @@ namespace engine
 		public:
 			virtual ~i_render() = default;
 			
-			void virtual Render() = 0;
+			void virtual render() = 0;
 		};
 	}
 }

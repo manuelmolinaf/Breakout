@@ -25,13 +25,13 @@ namespace engine
 			while (!m_children.empty()) delete m_children.back(), m_children.pop_back();
 		}
 
-		void game_object::AttachComponent(component* component)
+		void game_object::attach_component(component* component)
 		{
 			component->set_owner(this);
 			m_components.push_back(component);
 		}
 
-		void game_object::RemoveComponent(component* component)
+		void game_object::remove_component(component* component)
 		{
 			m_components.erase(
 				remove(m_components.begin(), m_components.end(), component), m_components.end()
@@ -40,7 +40,7 @@ namespace engine
 			delete component;
 		}
 
-		void game_object::AddChild(game_object* child)
+		void game_object::add_child(game_object* child)
 		{
 			// Set the child parent
 			child->m_parent = this;
@@ -49,7 +49,7 @@ namespace engine
 			m_children.push_back(child);
 		}
 
-		void game_object::RemoveChild(game_object* child)
+		void game_object::remove_child(game_object* child)
 		{
 			m_children.erase(
 				remove(m_children.begin(), m_children.end(), child), m_children.end()
@@ -81,7 +81,7 @@ namespace engine
 			i_update::update(deltaTime);
 		}
 
-		void game_object::Render()
+		void game_object::render()
 		{
 			//if ((m_nUpdates % 60) == 0)
 			{
@@ -90,7 +90,7 @@ namespace engine
 				std::vector< game_object* >::iterator child = m_children.begin();
 				for (; child != m_children.end(); ++child)
 				{
-					(*child)->Render();
+					(*child)->render();
 				}
 			}
 		}

@@ -3,12 +3,13 @@
 
 namespace engine
 {
-	float vertices[] = 
+	float vertices[] =
 	{
-	 0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 1.0f,  //0
-	 0.5f,  -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 0.0f,  //1
-	 -0.5f, -0.5f, 0.0f,  0.0f, 0.0f, 1.0f,   0.0f, 0.0f,  //2 
-	 -0.5f,  0.5f, 0.0f,  1.0f, 1.0f, 0.0f,   0.0f, 1.0f,  //3 
+	  0.5f,  0.5f, 0.0f,  1.0f, 1.0f, 1.0f, 1.0f,   1.0f, 1.0f,  //0
+	  0.5f, -0.5f, 0.0f,  1.0f, 1.0f, 1.0f, 1.0f,   1.0f, 0.0f,  //1
+	 -0.5f,-0.5f, 0.0f,   1.0f, 1.0f, 1.0f, 1.0f,   0.0f, 0.0f,  //2 
+	 -0.5f, 0.5f, 0.0f,   1.0f, 1.0f, 1.0f, 1.0f,   0.0f, 1.0f,  //3 
+
 	};
 
 	int indices[] = {0,2,3,0,1,2};
@@ -31,9 +32,11 @@ namespace engine
 	void renderer::initialize_program_id()
 	{
 		mProgramID = mShaderUtilities.LoadShaders("engine/shaders/vertex.glsl", "engine/shaders/frag.glsl");
+
 		texture test;
-		test.initialize_texture("game/assets/block.png");
+		test.initialize_texture("game/assets/paddle.png");
 		mTextures[0] = test;
+
 	}
 
 	void renderer::load_textures(const char* pTexturePaths[])
@@ -48,28 +51,34 @@ namespace engine
 
 	void renderer::render()
 	{
-		glUseProgram(mProgramID);
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mElementsBufferObject);
-		
 
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		glEnable(GL_BLEND);
+
+		//FIX
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, mTextures[0].get_texture());
+		//
 
+
+		glUseProgram(mProgramID);
 
 		glBindVertexArray(mVertexArrayObject);
-
-		glDrawElements(GL_TRIANGLES, sizeof(indices), GL_UNSIGNED_INT, (void*)0);
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mElementsBufferObject);
+		glDrawElements(GL_TRIANGLES, sizeof(indices), GL_UNSIGNED_INT, (void*)0); //limit vector buffering
 
 	}
 
 	void renderer::load_vertices()
 	{
+
 		// set up vertex data (and buffer(s)) and configure vertex attributes
 		// ------------------------------------------------------------------
 
 		glGenVertexArrays(1, &mVertexArrayObject);
 		glGenBuffers(1, &mVertexBufferObject);
 		glGenBuffers(1, &mElementsBufferObject);
+
 
 		// bind the Vertex Array Object first, then bind and set vertex buffer(s), and then configure vertex attributes(s).
 		glBindVertexArray(mVertexArrayObject);
@@ -82,15 +91,15 @@ namespace engine
 		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
 		// vertex position attribute
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
+		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 9 * sizeof(float), (void*)0);
 		glEnableVertexAttribArray(0);
 
 		// color attribute
-		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
+		glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 9 * sizeof(float), (void*)(3 * sizeof(float)));
 		glEnableVertexAttribArray(1);
 
 		// texture coord attribute
-		glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
+		glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 9 * sizeof(float), (void*)(7 * sizeof(float)));
 		glEnableVertexAttribArray(2);
 
 
@@ -102,12 +111,6 @@ namespace engine
 		// You can unbind the VAO afterwards so other VAO calls won't accidentally modify this VAO, but this rarely happens. Modifying other
 		// VAOs requires a call to glBindVertexArray anyways so we generally don't unbind VAOs (nor VBOs) when it's not directly necessary.
 		glBindVertexArray(0);
-
-		//glUseProgram(mProgramID);
-
-		// Remember this needs to be set after the program is activated
-		glUniform1i(glGetUniformLocation(mProgramID, "block"), 0);
-		
 		
 
 		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
