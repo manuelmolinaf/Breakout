@@ -6,7 +6,9 @@ namespace engine
 	{
 		component::component(const std::string& name)
 			: mName(name)
-		{}
+		{
+
+		}
 
 		component::~component()
 		{

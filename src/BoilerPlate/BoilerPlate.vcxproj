@@ -175,22 +175,22 @@ copy /Y "$(SolutionDir)\Externals\SDL2-2.0.4\lib\x64\SDL2.dll" "$(TargetDir)SDL2
     <ClCompile Include="engine\core\component.cpp" />
     <ClCompile Include="engine\core\game_object.cpp" />
     <ClCompile Include="engine\core\unique_id.cpp" />
-    <ClCompile Include="error_message_manager.cpp" />
+    <ClCompile Include="engine\math\math_utilities.cpp" />
+    <ClCompile Include="engine\math\matrix_4.cpp" />
+    <ClCompile Include="engine\math\vector_2.cpp" />
+    <ClCompile Include="engine\math\vector_3.cpp" />
+    <ClCompile Include="engine\math\vector_4.cpp" />
+    <ClCompile Include="engine\utils\error_message_manager.cpp" />
+    <ClCompile Include="engine\utils\TimeManager.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="input_manager.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="math_utilities.cpp" />
-    <ClCompile Include="matrix_4.cpp" />
     <ClCompile Include="renderer.cpp" />
     <ClCompile Include="resource_manager.cpp" />
     <ClCompile Include="SDLEvent.cpp" />
     <ClCompile Include="shader_utilities.cpp" />
     <ClCompile Include="sprite.cpp" />
     <ClCompile Include="texture.cpp" />
-    <ClCompile Include="TimeManager.cpp" />
-    <ClCompile Include="vector_2.cpp" />
-    <ClCompile Include="vector_3.cpp" />
-    <ClCompile Include="vector_4.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.hpp" />
@@ -199,22 +199,22 @@ copy /Y "$(SolutionDir)\Externals\SDL2-2.0.4\lib\x64\SDL2.dll" "$(TargetDir)SDL2
     <ClInclude Include="engine\core\i_render.hpp" />
     <ClInclude Include="engine\core\i_update.hpp" />
     <ClInclude Include="engine\core\unique_id.hpp" />
-    <ClInclude Include="error_message_manager.hpp" />
+    <ClInclude Include="engine\math\math_utilities.hpp" />
+    <ClInclude Include="engine\math\matrix_4.hpp" />
+    <ClInclude Include="engine\math\vector_2.hpp" />
+    <ClInclude Include="engine\math\vector_3.hpp" />
+    <ClInclude Include="engine\math\vector_4.hpp" />
+    <ClInclude Include="engine\utils\error_message_manager.hpp" />
+    <ClInclude Include="engine\utils\stb_image.h" />
+    <ClInclude Include="engine\utils\TimeManager.hpp" />
     <ClInclude Include="game.hpp" />
     <ClInclude Include="input_manager.hpp" />
-    <ClInclude Include="math_utilities.hpp" />
-    <ClInclude Include="matrix_4.hpp" />
     <ClInclude Include="renderer.hpp" />
     <ClInclude Include="resource_manager.hpp" />
     <ClInclude Include="SDLEvent.hpp" />
     <ClInclude Include="shader_utilities.hpp" />
     <ClInclude Include="sprite.hpp" />
-    <ClInclude Include="stb_image.h" />
     <ClInclude Include="texture.hpp" />
-    <ClInclude Include="TimeManager.hpp" />
-    <ClInclude Include="vector_2.hpp" />
-    <ClInclude Include="vector_3.hpp" />
-    <ClInclude Include="vector_4.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="game\assets\background.jpg" />

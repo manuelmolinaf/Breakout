@@ -30,19 +30,19 @@ namespace engine
 			void render() override;
 
 			//getters
-			std::vector<component*>GetComponents() const { return m_components; }
-			std::vector<game_object*> GetChildren() const { return m_children; }
-			game_object* GetParent() const { return m_parent; }
+			std::vector<component*>get_components() const { return mComponents; }
+			std::vector<game_object*> get_children() const { return mChildren; }
+			game_object* get_parent() const { return mParent; }
 
 			template<typename T>
 			T* get_component()
 			{
 				// If no components have been attached then return nothing
 				//
-				if (m_components.size() == 0) return nullptr;
+				if (mComponents.size() == 0) return nullptr;
 
-				std::vector< component* >::iterator comp = m_components.begin();
-				for (; comp != m_components.end(); ++comp)
+				std::vector< component* >::iterator comp = mComponents.begin();
+				for (; comp != mComponents.end(); ++comp)
 				{
 					T* theComponent = dynamic_cast<T*>(*comp);
 					if (theComponent)
@@ -56,9 +56,10 @@ namespace engine
 		protected:
 
 			//members
-			std::vector<component*>	m_components;
-			std::vector<game_object*> m_children;
-			game_object* m_parent;
+			std::vector<component*>	mComponents;
+			std::vector<game_object*> mChildren;
+			game_object* mParent;
+
 		};
 
 	}

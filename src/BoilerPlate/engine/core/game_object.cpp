@@ -11,30 +11,30 @@ namespace engine
 	namespace core
 	{
 		game_object::game_object()
-			: m_parent(nullptr)
+			: mParent(nullptr)
 		{}
 
 		game_object::~game_object()
 		{
 			// Delete all attached components
 			//
-			while (!m_components.empty()) delete m_components.back(), m_components.pop_back();
+			while (!mComponents.empty()) delete mComponents.back(), mComponents.pop_back();
 
 			// Delete all attached children
 			//
-			while (!m_children.empty()) delete m_children.back(), m_children.pop_back();
+			while (!mChildren.empty()) delete mChildren.back(), mChildren.pop_back();
 		}
 
 		void game_object::attach_component(component* component)
 		{
 			component->set_owner(this);
-			m_components.push_back(component);
+			mComponents.push_back(component);
 		}
 
 		void game_object::remove_component(component* component)
 		{
-			m_components.erase(
-				remove(m_components.begin(), m_components.end(), component), m_components.end()
+			mComponents.erase(
+				remove(mComponents.begin(), mComponents.end(), component), mComponents.end()
 			);
 
 			delete component;
@@ -43,16 +43,16 @@ namespace engine
 		void game_object::add_child(game_object* child)
 		{
 			// Set the child parent
-			child->m_parent = this;
+			child->mParent = this;
 
 			// 
-			m_children.push_back(child);
+			mChildren.push_back(child);
 		}
 
 		void game_object::remove_child(game_object* child)
 		{
-			m_children.erase(
-				remove(m_children.begin(), m_children.end(), child), m_children.end()
+			mChildren.erase(
+				remove(mChildren.begin(), mChildren.end(), child), mChildren.end()
 			);
 
 			delete child;
@@ -62,16 +62,16 @@ namespace engine
 		{
 			// Update components
 			//
-			std::vector< component* >::iterator comp = m_components.begin();
-			for (; comp != m_components.end(); ++comp)
+			std::vector< component* >::iterator comp = mComponents.begin();
+			for (; comp != mComponents.end(); ++comp)
 			{
 				(*comp)->update(deltaTime);
 			}
 
 			// Update children
 			//
-			std::vector< game_object* >::iterator child = m_children.begin();
-			for (; child != m_children.end(); ++child)
+			std::vector< game_object* >::iterator child = mChildren.begin();
+			for (; child != mChildren.end(); ++child)
 			{
 				(*child)->update(deltaTime);
 			}
@@ -87,8 +87,8 @@ namespace engine
 			{
 				// Render children
 				//
-				std::vector< game_object* >::iterator child = m_children.begin();
-				for (; child != m_children.end(); ++child)
+				std::vector< game_object* >::iterator child = mChildren.begin();
+				for (; child != mChildren.end(); ++child)
 				{
 					(*child)->render();
 				}

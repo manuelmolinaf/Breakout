@@ -3,7 +3,7 @@
 #include<iostream>
 
 #define STB_IMAGE_IMPLEMENTATION
-#include "stb_image.h"
+#include "engine/utils/stb_image.h"
 
 namespace engine
 {
@@ -16,8 +16,8 @@ namespace engine
 	{
 		mTexture = load_texture(texture_path);
 	}
-*/
-	GLuint texture::load_texture(const char * texture_path)
+    */
+	GLuint texture::load_texture(const char* pTexturePath, bool pAlpha)
 	{
 		unsigned int texture;
 		glGenTextures(1, &texture);
@@ -32,11 +32,20 @@ namespace engine
 		stbi_set_flip_vertically_on_load(true);
 
 		// Load the texture
-		unsigned char *data = stbi_load(texture_path, &width, &height, &nrChannels, 0);
+		unsigned char *data = stbi_load(pTexturePath, &width, &height, &nrChannels, 0);
 		if (data)
 		{
-			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
-			glGenerateMipmap(GL_TEXTURE_2D);
+
+			if (pAlpha == false)
+			{
+				glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+				glGenerateMipmap(GL_TEXTURE_2D);
+			}
+			else
+			{
+				glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
+				glGenerateMipmap(GL_TEXTURE_2D);
+			}
 		}
 		else
 		{
@@ -53,8 +62,8 @@ namespace engine
 		return mTexture;
 	}
 
-	void texture::initialize_texture(const char* texture_path)
+	void texture::initialize_texture(const char* pTexturePath, bool pAlpha)
 	{
-		mTexture = load_texture(texture_path);
+		mTexture = load_texture(pTexturePath, pAlpha);
 	}
 }

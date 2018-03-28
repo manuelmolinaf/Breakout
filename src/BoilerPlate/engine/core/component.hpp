@@ -29,7 +29,7 @@ namespace engine
 
 			//memebers
 			game_object*	mOwner;
-			std::string	mName;
+			std::string 	mName;
 		};
 	}
 }

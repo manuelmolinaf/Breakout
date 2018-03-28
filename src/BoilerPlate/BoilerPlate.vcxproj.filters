@@ -4,21 +4,6 @@
     <ClCompile Include="App.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="SDLEvent.cpp" />
-    <ClCompile Include="matrix_4.cpp">
-      <Filter>engine\Source files</Filter>
-    </ClCompile>
-    <ClCompile Include="vector_2.cpp">
-      <Filter>engine\Source files</Filter>
-    </ClCompile>
-    <ClCompile Include="vector_3.cpp">
-      <Filter>engine\Source files</Filter>
-    </ClCompile>
-    <ClCompile Include="vector_4.cpp">
-      <Filter>engine\Source files</Filter>
-    </ClCompile>
-    <ClCompile Include="math_utilities.cpp">
-      <Filter>engine\Source files</Filter>
-    </ClCompile>
     <ClCompile Include="renderer.cpp">
       <Filter>engine\Source files</Filter>
     </ClCompile>
@@ -26,9 +11,6 @@
       <Filter>engine\Source files</Filter>
     </ClCompile>
     <ClCompile Include="texture.cpp">
-      <Filter>engine\Source files</Filter>
-    </ClCompile>
-    <ClCompile Include="error_message_manager.cpp">
       <Filter>engine\Source files</Filter>
     </ClCompile>
     <ClCompile Include="game.cpp">
@@ -52,26 +34,29 @@
     <ClCompile Include="engine\core\unique_id.cpp">
       <Filter>engine\Source files</Filter>
     </ClCompile>
-    <ClCompile Include="TimeManager.cpp" />
+    <ClCompile Include="engine\utils\TimeManager.cpp" />
+    <ClCompile Include="engine\math\vector_4.cpp">
+      <Filter>engine\Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\math\vector_3.cpp">
+      <Filter>engine\Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\math\vector_2.cpp">
+      <Filter>engine\Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\math\matrix_4.cpp">
+      <Filter>engine\Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\math\math_utilities.cpp">
+      <Filter>engine\Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\utils\error_message_manager.cpp">
+      <Filter>engine\Source files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.hpp" />
     <ClInclude Include="SDLEvent.hpp" />
-    <ClInclude Include="vector_4.hpp">
-      <Filter>engine\Header files</Filter>
-    </ClInclude>
-    <ClInclude Include="vector_3.hpp">
-      <Filter>engine\Header files</Filter>
-    </ClInclude>
-    <ClInclude Include="matrix_4.hpp">
-      <Filter>engine\Header files</Filter>
-    </ClInclude>
-    <ClInclude Include="vector_2.hpp">
-      <Filter>engine\Header files</Filter>
-    </ClInclude>
-    <ClInclude Include="math_utilities.hpp">
-      <Filter>engine\Header files</Filter>
-    </ClInclude>
     <ClInclude Include="renderer.hpp">
       <Filter>engine\Header files</Filter>
     </ClInclude>
@@ -79,9 +64,6 @@
       <Filter>engine\Header files</Filter>
     </ClInclude>
     <ClInclude Include="texture.hpp">
-      <Filter>engine\Header files</Filter>
-    </ClInclude>
-    <ClInclude Include="error_message_manager.hpp">
       <Filter>engine\Header files</Filter>
     </ClInclude>
     <ClInclude Include="game.hpp">
@@ -111,8 +93,26 @@
     <ClInclude Include="engine\core\component.hpp">
       <Filter>engine\Header files</Filter>
     </ClInclude>
-    <ClInclude Include="TimeManager.hpp" />
-    <ClInclude Include="stb_image.h" />
+    <ClInclude Include="engine\utils\TimeManager.hpp" />
+    <ClInclude Include="engine\utils\stb_image.h" />
+    <ClInclude Include="engine\math\math_utilities.hpp">
+      <Filter>engine\Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\math\vector_2.hpp">
+      <Filter>engine\Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\math\vector_3.hpp">
+      <Filter>engine\Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\math\vector_4.hpp">
+      <Filter>engine\Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\math\matrix_4.hpp">
+      <Filter>engine\Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\utils\error_message_manager.hpp">
+      <Filter>engine\Header files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="engine">

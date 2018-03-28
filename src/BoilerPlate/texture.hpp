@@ -16,11 +16,11 @@ namespace engine
 		texture();
 		//texture(const char* texture_path);
 
-		GLuint load_texture(const char* texture_path);
+		GLuint load_texture(const char* pTexturePath, bool pAlpha);
 
 		GLuint get_texture();
 
-		void initialize_texture(const char* texture_path);
+		void initialize_texture(const char* pTexturePath, bool pAlpha);
 
 	private:
 

@@ -34,7 +34,7 @@ namespace engine
 		mProgramID = mShaderUtilities.LoadShaders("engine/shaders/vertex.glsl", "engine/shaders/frag.glsl");
 
 		texture test;
-		test.initialize_texture("game/assets/paddle.png");
+		test.initialize_texture("game/assets/paddle.png", true);
 		mTextures[0] = test;
 
 	}
@@ -44,16 +44,14 @@ namespace engine
 		texture init;
 		for (int i = 0; i < sizeof(pTexturePaths); i++)
 		{
-			init.initialize_texture(pTexturePaths[i]);
+			init.initialize_texture(pTexturePaths[i], false);
 			mTextures[i] = init;
 		}
 	}
 
 	void renderer::render()
 	{
-
-		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-		glEnable(GL_BLEND);
+		
 
 		//FIX
 		glActiveTexture(GL_TEXTURE0);
@@ -71,6 +69,9 @@ namespace engine
 
 	void renderer::load_vertices()
 	{
+
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 		// set up vertex data (and buffer(s)) and configure vertex attributes
 		// ------------------------------------------------------------------
