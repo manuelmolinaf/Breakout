@@ -53,6 +53,12 @@
     <ClCompile Include="engine\utils\error_message_manager.cpp">
       <Filter>engine\Source files</Filter>
     </ClCompile>
+    <ClCompile Include="block.cpp">
+      <Filter>engine\Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="ball.cpp">
+      <Filter>engine\Source files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.hpp" />
@@ -111,6 +117,12 @@
       <Filter>engine\Header files</Filter>
     </ClInclude>
     <ClInclude Include="engine\utils\error_message_manager.hpp">
+      <Filter>engine\Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="block.hpp">
+      <Filter>engine\Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="ball.hpp">
       <Filter>engine\Header files</Filter>
     </ClInclude>
   </ItemGroup>
