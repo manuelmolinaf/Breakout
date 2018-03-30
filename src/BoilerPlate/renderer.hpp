@@ -4,7 +4,7 @@
 #define RENDERER_HPP
 
 #include "shader_utilities.hpp"
-#include "texture.hpp"
+#include "texture_manager.hpp"
 
 const int MAX_TEXTURES = 16;
 

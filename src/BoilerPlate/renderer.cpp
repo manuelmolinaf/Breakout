@@ -34,7 +34,7 @@ namespace engine
 		mProgramID = mShaderUtilities.LoadShaders("engine/shaders/vertex.glsl", "engine/shaders/frag.glsl");
 
 		texture test;
-		test.initialize_texture("game/assets/paddle.png", true);
+		test.initialize_texture("game/assets/block.png", false);
 		mTextures[0] = test;
 
 	}

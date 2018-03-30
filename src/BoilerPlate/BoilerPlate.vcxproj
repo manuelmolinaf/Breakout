@@ -174,6 +174,7 @@ copy /Y "$(SolutionDir)\Externals\SDL2-2.0.4\lib\x64\SDL2.dll" "$(TargetDir)SDL2
     <ClCompile Include="App.cpp" />
     <ClCompile Include="ball.cpp" />
     <ClCompile Include="block.cpp" />
+    <ClCompile Include="c_vertices.cpp" />
     <ClCompile Include="engine\core\component.cpp" />
     <ClCompile Include="engine\core\game_object.cpp" />
     <ClCompile Include="engine\core\unique_id.cpp" />
@@ -192,7 +193,7 @@ copy /Y "$(SolutionDir)\Externals\SDL2-2.0.4\lib\x64\SDL2.dll" "$(TargetDir)SDL2
     <ClCompile Include="SDLEvent.cpp" />
     <ClCompile Include="shader_utilities.cpp" />
     <ClCompile Include="sprite.cpp" />
-    <ClCompile Include="texture.cpp" />
+    <ClCompile Include="texture_manager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.hpp" />
@@ -213,12 +214,13 @@ copy /Y "$(SolutionDir)\Externals\SDL2-2.0.4\lib\x64\SDL2.dll" "$(TargetDir)SDL2
     <ClInclude Include="engine\utils\TimeManager.hpp" />
     <ClInclude Include="game.hpp" />
     <ClInclude Include="input_manager.hpp" />
+    <ClInclude Include="c_vertices.hpp" />
     <ClInclude Include="renderer.hpp" />
     <ClInclude Include="resource_manager.hpp" />
     <ClInclude Include="SDLEvent.hpp" />
     <ClInclude Include="shader_utilities.hpp" />
     <ClInclude Include="sprite.hpp" />
-    <ClInclude Include="texture.hpp" />
+    <ClInclude Include="texture_manager.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="game\assets\background.jpg" />
