@@ -4,10 +4,14 @@ namespace engine
 {
 	namespace core
 	{
-		component::component(const std::string& name)
-			: mName(name)
+		component::component()
 		{
 
+		}
+
+		component::component(const std::string& pName)
+		{
+			mName = pName;
 		}
 
 		component::~component()

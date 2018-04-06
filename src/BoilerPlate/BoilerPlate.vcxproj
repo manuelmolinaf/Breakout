@@ -174,7 +174,7 @@ copy /Y "$(SolutionDir)\Externals\SDL2-2.0.4\lib\x64\SDL2.dll" "$(TargetDir)SDL2
     <ClCompile Include="App.cpp" />
     <ClCompile Include="ball.cpp" />
     <ClCompile Include="block.cpp" />
-    <ClCompile Include="c_vertices.cpp" />
+    <ClCompile Include="c_model_Matrix.cpp" />
     <ClCompile Include="engine\core\component.cpp" />
     <ClCompile Include="engine\core\game_object.cpp" />
     <ClCompile Include="engine\core\unique_id.cpp" />
@@ -192,7 +192,6 @@ copy /Y "$(SolutionDir)\Externals\SDL2-2.0.4\lib\x64\SDL2.dll" "$(TargetDir)SDL2
     <ClCompile Include="resource_manager.cpp" />
     <ClCompile Include="SDLEvent.cpp" />
     <ClCompile Include="shader_utilities.cpp" />
-    <ClCompile Include="sprite.cpp" />
     <ClCompile Include="texture_manager.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -200,7 +199,11 @@ copy /Y "$(SolutionDir)\Externals\SDL2-2.0.4\lib\x64\SDL2.dll" "$(TargetDir)SDL2
     <ClInclude Include="ball.hpp" />
     <ClInclude Include="block.hpp" />
     <ClInclude Include="engine\core\component.hpp" />
+    <ClInclude Include="engine\core\c_model_matrix.hpp" />
+    <ClInclude Include="engine\core\c_texture.hpp" />
+    <ClInclude Include="engine\core\c_vertices.hpp" />
     <ClInclude Include="engine\core\game_object.hpp" />
+    <ClInclude Include="engine\core\include_components.hpp" />
     <ClInclude Include="engine\core\i_render.hpp" />
     <ClInclude Include="engine\core\i_update.hpp" />
     <ClInclude Include="engine\core\unique_id.hpp" />
@@ -214,12 +217,10 @@ copy /Y "$(SolutionDir)\Externals\SDL2-2.0.4\lib\x64\SDL2.dll" "$(TargetDir)SDL2
     <ClInclude Include="engine\utils\TimeManager.hpp" />
     <ClInclude Include="game.hpp" />
     <ClInclude Include="input_manager.hpp" />
-    <ClInclude Include="c_vertices.hpp" />
     <ClInclude Include="renderer.hpp" />
     <ClInclude Include="resource_manager.hpp" />
     <ClInclude Include="SDLEvent.hpp" />
     <ClInclude Include="shader_utilities.hpp" />
-    <ClInclude Include="sprite.hpp" />
     <ClInclude Include="texture_manager.hpp" />
   </ItemGroup>
   <ItemGroup>

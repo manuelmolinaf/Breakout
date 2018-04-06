@@ -4,23 +4,25 @@
 
 #include"engine/core/game_object.hpp"
 
-namespace entities
+namespace game
 {
-	class block : engine::core::game_object
+	namespace entities
 	{
+		class block : engine::core::game_object
+		{
 
-	public:
-		block();
-		~block();
-
-		
+		public:
+			block();
+			~block();
 
 
-	private:
+		private:
 
-		
+			//void attach_components();
 
-	};
+		};
+
+	}
 
 }
 

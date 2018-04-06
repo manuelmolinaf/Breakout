@@ -3,7 +3,7 @@
 #ifndef _C_VERTICES_HPP_
 #define _C_VERTICES_HPP_
 
-#include "engine\core\component.hpp"
+#include "component.hpp"
 
 const int MAX_VERTICES = 36;
 const int MAX_INDICES = 6;
@@ -16,13 +16,11 @@ namespace engine
 		struct c_vertices : engine::core::component
 		{
 
-		public:
+			c_vertices(std::string pName);
 
 			float mObjectVertices[MAX_VERTICES];
 			int mIndices[MAX_INDICES];
 
-			
-		
 		};
 	}
 }

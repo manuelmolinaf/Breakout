@@ -3,8 +3,8 @@
 #ifndef _C_TEXTURE_HPP_
 #define _C_TEXTURE_HPP_
 
-#include "engine\core\component.hpp"
-#include "texture_manager.hpp"
+#include "component.hpp"
+#include "..\..\texture_manager.hpp"
 
 
 namespace engine

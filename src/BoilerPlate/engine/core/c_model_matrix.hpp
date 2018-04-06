@@ -1,18 +1,18 @@
 #pragma once
-
 #ifndef _C_MODEL_MATRIX_HPP_
 #define _C_MODEL_MATRIX_HPP_
 
-#include "engine\core\component.hpp"
-#include "engine\math\matrix_4.hpp"
+#include "component.hpp"
+#include "..\math\matrix_4.hpp"
 
 
 namespace engine
 {
 	namespace core
 	{
-		struct c_texture : engine::core::component
+		struct c_model_matrix : engine::core::component
 		{
+			c_model_matrix(std::string pName);
 			math::matrix_4 mModelMatrtix;
 		};
 	}

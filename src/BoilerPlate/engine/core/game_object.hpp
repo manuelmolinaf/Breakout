@@ -9,6 +9,8 @@
 #include "i_render.hpp"
 #include "unique_id.hpp"
 
+#include "include_components.hpp"
+
 namespace engine
 {
 	namespace core
@@ -35,7 +37,7 @@ namespace engine
 			game_object* get_parent() const { return mParent; }
 
 			template<typename T>
-			T* get_component()
+			T* get_component(const std::string& pName)
 			{
 				// If no components have been attached then return nothing
 				//

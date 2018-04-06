@@ -13,9 +13,6 @@
     <ClCompile Include="game.cpp">
       <Filter>engine\Source files</Filter>
     </ClCompile>
-    <ClCompile Include="sprite.cpp">
-      <Filter>engine\Source files</Filter>
-    </ClCompile>
     <ClCompile Include="resource_manager.cpp">
       <Filter>engine\Source files</Filter>
     </ClCompile>
@@ -59,7 +56,7 @@
     <ClCompile Include="texture_manager.cpp">
       <Filter>engine\Source files</Filter>
     </ClCompile>
-    <ClCompile Include="c_vertices.cpp">
+    <ClCompile Include="c_model_Matrix.cpp">
       <Filter>engine\Source files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -73,9 +70,6 @@
       <Filter>engine\Header files</Filter>
     </ClInclude>
     <ClInclude Include="game.hpp">
-      <Filter>engine\Header files</Filter>
-    </ClInclude>
-    <ClInclude Include="sprite.hpp">
       <Filter>engine\Header files</Filter>
     </ClInclude>
     <ClInclude Include="resource_manager.hpp">
@@ -128,7 +122,16 @@
     <ClInclude Include="texture_manager.hpp">
       <Filter>engine\Header files</Filter>
     </ClInclude>
-    <ClInclude Include="c_vertices.hpp">
+    <ClInclude Include="engine\core\include_components.hpp">
+      <Filter>engine\Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\core\c_model_matrix.hpp">
+      <Filter>engine\Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\core\c_texture.hpp">
+      <Filter>engine\Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\core\c_vertices.hpp">
       <Filter>engine\Header files</Filter>
     </ClInclude>
   </ItemGroup>
