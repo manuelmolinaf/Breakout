@@ -3,8 +3,10 @@
 #ifndef RENDERER_HPP
 #define RENDERER_HPP
 
+#include "engine/math/matrix_4.hpp"
 #include "shader_utilities.hpp"
 #include "texture_manager.hpp"
+
 
 const int MAX_TEXTURES = 16;
 

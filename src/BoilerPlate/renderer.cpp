@@ -51,6 +51,40 @@ namespace engine
 
 	void renderer::render()
 	{
+		//change this, send model as a parameter
+		math::matrix_4 model = math::matrix_4();
+
+		math::matrix_4 view = math::matrix_4();
+		math::matrix_4 projection = math::matrix_4();
+
+		model.translate(math::vector_4(0.0f, 0.80f, 0.0f, 1.0f));
+		model.rotateZ(0.0f);
+
+		view.translate(math::vector_4(0.0f, 0.0f, -3.0f, 1.0f));
+		view.rotateZ(0.0f);
+
+		//update with heighy and width
+		//projection.make_perspective(30.0f, 0.1f, 100.0f, (float)mHeight / mWidth);
+		projection.make_perspective(30.0f, 0.1f, 100.0f);
+		
+
+		// retrieve the matrix uniform locations
+		GLuint modelLoc = glGetUniformLocation(mProgramID, "model");
+		GLuint viewLoc = glGetUniformLocation(mProgramID, "view");
+		GLuint projectionLoc = glGetUniformLocation(mProgramID, "projection");
+
+		float modelMatrix[16];
+		float viewMatrix[16];
+		float projectionMatrix[16];
+
+		//use the parameter model, create set matrix function
+		pModelMatrix.set_matrix(modelMatrix);
+		view.set_matrix(viewMatrix);
+		projection.set_matrix(projectionMatrix);
+
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, modelMatrix);
+		glUniformMatrix4fv(viewLoc, 1, GL_FALSE, viewMatrix);
+		glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, projectionMatrix);
 		
 
 		//FIX
