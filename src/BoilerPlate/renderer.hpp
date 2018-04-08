@@ -5,6 +5,9 @@
 
 #include "shader_utilities.hpp"
 #include "texture_manager.hpp"
+#include "engine\math\vector_4.hpp"
+#include "engine\math\matrix_4.hpp"
+#include "engine\core\game_object.hpp"
 
 const int MAX_TEXTURES = 16;
 
@@ -23,11 +26,14 @@ namespace engine
 		void initialize_program_id();
 		void render();
 		void toggle_polygon_mode();
+		void generate_buffers();
 		
 
 	private:
 
 		bool mPolygonMode;
+		int mWidth;
+		int mHeight;
 
 		GLuint mVertexArrayObject;
 		GLuint mVertexBufferObject;

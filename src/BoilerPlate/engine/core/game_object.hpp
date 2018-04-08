@@ -8,8 +8,8 @@
 #include "i_update.hpp"
 #include "i_render.hpp"
 #include "unique_id.hpp"
-
 #include "include_components.hpp"
+#include "..\math\matrix_4.hpp"
 
 namespace engine
 {
@@ -35,33 +35,16 @@ namespace engine
 			std::vector<component*>get_components() const { return mComponents; }
 			std::vector<game_object*> get_children() const { return mChildren; }
 			game_object* get_parent() const { return mParent; }
-
-			template<typename T>
-			T* get_component(const std::string& pName)
-			{
-				// If no components have been attached then return nothing
-				//
-				if (mComponents.size() == 0) return nullptr;
-
-				std::vector< component* >::iterator comp = mComponents.begin();
-				for (; comp != mComponents.end(); ++comp)
-				{
-					T* theComponent = dynamic_cast<T*>(*comp);
-					if (theComponent)
-					{
-						return theComponent;
-					}
-				}
-
-				return nullptr;
-			}
+			component *get_component(std::string pComponentName);
+			math::matrix_4 get_model_matrix();
+			
 		protected:
 
 			//members
 			std::vector<component*>	mComponents;
 			std::vector<game_object*> mChildren;
 			game_object* mParent;
-
+			
 		};
 
 	}

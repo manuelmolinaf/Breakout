@@ -10,11 +10,20 @@ namespace engine
 {
 	namespace core
 	{
-		struct c_model_matrix : engine::core::component
+		namespace components
 		{
-			c_model_matrix(std::string pName);
-			math::matrix_4 mModelMatrtix;
-		};
+			class c_model_matrix : public core::component
+			{
+			public:
+
+				c_model_matrix(const std::string& pName);
+				math::matrix_4* get_model_matrix();
+
+			private:
+
+				math::matrix_4 mModelMatrix;
+			};
+		}
 	}
 }
 

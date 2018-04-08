@@ -11,10 +11,20 @@ namespace engine
 {
 	namespace core
 	{
-		struct c_texture : engine::core::component
+		namespace components
 		{
-			texture mObjectTexture;
-		};
+			class c_texture : public engine::core::component
+			{
+			public:
+				c_texture(const std::string& pName, int pTextureIndex);
+
+				int get_texture_index();
+
+			private:
+
+				int mTextureIndex;
+			};
+		}
 	}
 }
 

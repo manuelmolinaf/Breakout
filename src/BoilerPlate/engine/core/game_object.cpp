@@ -11,8 +11,9 @@ namespace engine
 	namespace core
 	{
 		game_object::game_object()
-			: mParent(nullptr)
-		{}
+		{
+			mParent = nullptr;
+		}
 
 		game_object::~game_object()
 		{
@@ -33,10 +34,7 @@ namespace engine
 
 		void game_object::remove_component(component* component)
 		{
-			mComponents.erase(
-				remove(mComponents.begin(), mComponents.end(), component), mComponents.end()
-			);
-
+			mComponents.erase(remove(mComponents.begin(), mComponents.end(), component), mComponents.end());
 			delete component;
 		}
 
@@ -51,9 +49,7 @@ namespace engine
 
 		void game_object::remove_child(game_object* child)
 		{
-			mChildren.erase(
-				remove(mChildren.begin(), mChildren.end(), child), mChildren.end()
-			);
+			mChildren.erase(remove(mChildren.begin(), mChildren.end(), child), mChildren.end());
 
 			delete child;
 		}
@@ -94,5 +90,19 @@ namespace engine
 				}
 			}
 		}
+
+		component *game_object::get_component(std::string Name)
+		{
+			for (int i = 0; i < mComponents.size(); i++)
+			{
+				if (mComponents[i]->get_name() == Name)
+				{
+					return mComponents[i];
+				}
+			}
+
+			return NULL;
+		}
+
 	}
 }

@@ -15,17 +15,13 @@ namespace game
 		}
 
 
-		//void block::attach_components()
-		//{
-		////	engine::core::c_vertices vertices = engine::core::c_vertices("vertices");
-		////	//attach_component(&vertices);
+		void block::attach_components()
+		{
+	
+			
 
-		////	engine::core::c_model_matrix modelMatrix = engine::core::c_model_matrix("model_matrix");
-		////	//attach_component(&modelMatrix);
-
-
-		//	
-		//}
+			
+		}
 
 
 	}

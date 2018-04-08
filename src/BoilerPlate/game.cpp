@@ -16,7 +16,7 @@ namespace game
 	{
 		mRenderer.initialize_program_id();
 
-		mRenderer.load_vertices();
+		mRenderer.generate_buffers();
 	}
 
 	void game::update()

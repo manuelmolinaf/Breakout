@@ -608,14 +608,16 @@ namespace engine
 		}
 
 
-		void matrix_4::make_perspective(const float &pFieldOfView, const float &pNearClippingPlane, const float &pFarClippingPlane)
+		void matrix_4::make_perspective(const float &pFieldOfView, const float &pNearClippingPlane, const float &pFarClippingPlane, const float& pScreenAspect)
 		{
 
-			float scale = (float)(1 / (tan(pFieldOfView * 0.5) * mathTool.degrees_to_radians(1)));
+			
+			
+			float scale = (float)(1.0f / (tan(mathTool.degrees_to_radians(pFieldOfView * 0.5f))));
 
-			float inverseClippingPlaneDifference = 1 / (pFarClippingPlane - pNearClippingPlane);
+			float inverseClippingPlaneDifference = 1.0f / (pFarClippingPlane - pNearClippingPlane);
 
-			mMatrix[0] = scale;
+			mMatrix[0] = scale * pScreenAspect;
 			mMatrix[5] = scale;
 			mMatrix[10] = -pFarClippingPlane * inverseClippingPlaneDifference;
 			mMatrix[11] = -1;

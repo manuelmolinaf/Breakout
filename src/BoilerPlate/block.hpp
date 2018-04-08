@@ -18,7 +18,7 @@ namespace game
 
 		private:
 
-			//void attach_components();
+			void attach_components();
 
 		};
 

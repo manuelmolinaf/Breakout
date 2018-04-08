@@ -174,8 +174,12 @@ copy /Y "$(SolutionDir)\Externals\SDL2-2.0.4\lib\x64\SDL2.dll" "$(TargetDir)SDL2
     <ClCompile Include="App.cpp" />
     <ClCompile Include="ball.cpp" />
     <ClCompile Include="block.cpp" />
-    <ClCompile Include="c_model_Matrix.cpp" />
     <ClCompile Include="engine\core\component.cpp" />
+    <ClCompile Include="engine\core\c_model_matrix.cpp" />
+    <ClCompile Include="engine\core\c_movement.cpp" />
+    <ClCompile Include="engine\core\c_position.cpp" />
+    <ClCompile Include="engine\core\c_texture.cpp" />
+    <ClCompile Include="engine\core\c_vertices.cpp" />
     <ClCompile Include="engine\core\game_object.cpp" />
     <ClCompile Include="engine\core\unique_id.cpp" />
     <ClCompile Include="engine\math\math_utilities.cpp" />
@@ -200,6 +204,8 @@ copy /Y "$(SolutionDir)\Externals\SDL2-2.0.4\lib\x64\SDL2.dll" "$(TargetDir)SDL2
     <ClInclude Include="block.hpp" />
     <ClInclude Include="engine\core\component.hpp" />
     <ClInclude Include="engine\core\c_model_matrix.hpp" />
+    <ClInclude Include="engine\core\c_movement.hpp" />
+    <ClInclude Include="engine\core\c_position.hpp" />
     <ClInclude Include="engine\core\c_texture.hpp" />
     <ClInclude Include="engine\core\c_vertices.hpp" />
     <ClInclude Include="engine\core\game_object.hpp" />

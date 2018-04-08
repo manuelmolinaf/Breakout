@@ -1,173 +1,229 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="App.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="SDLEvent.cpp" />
-    <ClCompile Include="renderer.cpp">
-      <Filter>engine\Source files</Filter>
-    </ClCompile>
-    <ClCompile Include="shader_utilities.cpp">
-      <Filter>engine\Source files</Filter>
-    </ClCompile>
-    <ClCompile Include="game.cpp">
-      <Filter>engine\Source files</Filter>
-    </ClCompile>
-    <ClCompile Include="resource_manager.cpp">
-      <Filter>engine\Source files</Filter>
-    </ClCompile>
-    <ClCompile Include="input_manager.cpp">
-      <Filter>engine\Source files</Filter>
-    </ClCompile>
     <ClCompile Include="engine\core\component.cpp">
-      <Filter>engine\Source files</Filter>
+      <Filter>BoilerPlate\engine\core</Filter>
     </ClCompile>
     <ClCompile Include="engine\core\game_object.cpp">
-      <Filter>engine\Source files</Filter>
+      <Filter>BoilerPlate\engine\core</Filter>
     </ClCompile>
     <ClCompile Include="engine\core\unique_id.cpp">
-      <Filter>engine\Source files</Filter>
+      <Filter>BoilerPlate\engine\core</Filter>
     </ClCompile>
-    <ClCompile Include="engine\utils\TimeManager.cpp" />
     <ClCompile Include="engine\math\vector_4.cpp">
-      <Filter>engine\Source files</Filter>
+      <Filter>BoilerPlate\engine\math</Filter>
     </ClCompile>
     <ClCompile Include="engine\math\vector_3.cpp">
-      <Filter>engine\Source files</Filter>
+      <Filter>BoilerPlate\engine\math</Filter>
     </ClCompile>
     <ClCompile Include="engine\math\vector_2.cpp">
-      <Filter>engine\Source files</Filter>
+      <Filter>BoilerPlate\engine\math</Filter>
     </ClCompile>
     <ClCompile Include="engine\math\matrix_4.cpp">
-      <Filter>engine\Source files</Filter>
+      <Filter>BoilerPlate\engine\math</Filter>
     </ClCompile>
     <ClCompile Include="engine\math\math_utilities.cpp">
-      <Filter>engine\Source files</Filter>
+      <Filter>BoilerPlate\engine\math</Filter>
     </ClCompile>
     <ClCompile Include="engine\utils\error_message_manager.cpp">
-      <Filter>engine\Source files</Filter>
+      <Filter>BoilerPlate\engine\utils</Filter>
     </ClCompile>
-    <ClCompile Include="block.cpp">
-      <Filter>engine\Source files</Filter>
+    <ClCompile Include="engine\utils\TimeManager.cpp">
+      <Filter>BoilerPlate\engine\utils</Filter>
     </ClCompile>
-    <ClCompile Include="ball.cpp">
-      <Filter>engine\Source files</Filter>
+    <ClCompile Include="input_manager.cpp">
+      <Filter>BoilerPlate\engine\core</Filter>
+    </ClCompile>
+    <ClCompile Include="renderer.cpp">
+      <Filter>BoilerPlate\engine\core</Filter>
+    </ClCompile>
+    <ClCompile Include="resource_manager.cpp">
+      <Filter>BoilerPlate\engine\core</Filter>
     </ClCompile>
     <ClCompile Include="texture_manager.cpp">
-      <Filter>engine\Source files</Filter>
+      <Filter>BoilerPlate\engine\core</Filter>
     </ClCompile>
-    <ClCompile Include="c_model_Matrix.cpp">
-      <Filter>engine\Source files</Filter>
+    <ClCompile Include="shader_utilities.cpp">
+      <Filter>BoilerPlate\engine\core</Filter>
+    </ClCompile>
+    <ClCompile Include="game.cpp">
+      <Filter>BoilerPlate\game</Filter>
+    </ClCompile>
+    <ClCompile Include="ball.cpp">
+      <Filter>BoilerPlate\game\objects</Filter>
+    </ClCompile>
+    <ClCompile Include="block.cpp">
+      <Filter>BoilerPlate\game\objects</Filter>
+    </ClCompile>
+    <ClCompile Include="SDLEvent.cpp">
+      <Filter>BoilerPlate</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>BoilerPlate</Filter>
+    </ClCompile>
+    <ClCompile Include="App.cpp">
+      <Filter>BoilerPlate</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\core\c_model_matrix.cpp">
+      <Filter>BoilerPlate\engine\core\components</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\core\c_movement.cpp">
+      <Filter>BoilerPlate\engine\core\components</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\core\c_position.cpp">
+      <Filter>BoilerPlate\engine\core\components</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\core\c_texture.cpp">
+      <Filter>BoilerPlate\engine\core\components</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\core\c_vertices.cpp">
+      <Filter>BoilerPlate\engine\core\components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="App.hpp" />
-    <ClInclude Include="SDLEvent.hpp" />
-    <ClInclude Include="renderer.hpp">
-      <Filter>engine\Header files</Filter>
-    </ClInclude>
-    <ClInclude Include="shader_utilities.hpp">
-      <Filter>engine\Header files</Filter>
-    </ClInclude>
-    <ClInclude Include="game.hpp">
-      <Filter>engine\Header files</Filter>
-    </ClInclude>
-    <ClInclude Include="resource_manager.hpp">
-      <Filter>engine\Header files</Filter>
-    </ClInclude>
-    <ClInclude Include="input_manager.hpp">
-      <Filter>engine\Header files</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\core\unique_id.hpp">
-      <Filter>engine\Header files</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\core\i_update.hpp">
-      <Filter>engine\Header files</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\core\i_render.hpp">
-      <Filter>engine\Header files</Filter>
+    <ClInclude Include="engine\core\component.hpp">
+      <Filter>BoilerPlate\engine\core</Filter>
     </ClInclude>
     <ClInclude Include="engine\core\game_object.hpp">
-      <Filter>engine\Header files</Filter>
+      <Filter>BoilerPlate\engine\core</Filter>
     </ClInclude>
-    <ClInclude Include="engine\core\component.hpp">
-      <Filter>engine\Header files</Filter>
+    <ClInclude Include="engine\core\i_render.hpp">
+      <Filter>BoilerPlate\engine\core</Filter>
     </ClInclude>
-    <ClInclude Include="engine\utils\TimeManager.hpp" />
-    <ClInclude Include="engine\utils\stb_image.h" />
-    <ClInclude Include="engine\math\math_utilities.hpp">
-      <Filter>engine\Header files</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\math\vector_2.hpp">
-      <Filter>engine\Header files</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\math\vector_3.hpp">
-      <Filter>engine\Header files</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\math\vector_4.hpp">
-      <Filter>engine\Header files</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\math\matrix_4.hpp">
-      <Filter>engine\Header files</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\utils\error_message_manager.hpp">
-      <Filter>engine\Header files</Filter>
-    </ClInclude>
-    <ClInclude Include="block.hpp">
-      <Filter>engine\Header files</Filter>
-    </ClInclude>
-    <ClInclude Include="ball.hpp">
-      <Filter>engine\Header files</Filter>
-    </ClInclude>
-    <ClInclude Include="texture_manager.hpp">
-      <Filter>engine\Header files</Filter>
+    <ClInclude Include="engine\core\i_update.hpp">
+      <Filter>BoilerPlate\engine\core</Filter>
     </ClInclude>
     <ClInclude Include="engine\core\include_components.hpp">
-      <Filter>engine\Header files</Filter>
+      <Filter>BoilerPlate\engine\core</Filter>
     </ClInclude>
-    <ClInclude Include="engine\core\c_model_matrix.hpp">
-      <Filter>engine\Header files</Filter>
+    <ClInclude Include="engine\core\unique_id.hpp">
+      <Filter>BoilerPlate\engine\core</Filter>
     </ClInclude>
-    <ClInclude Include="engine\core\c_texture.hpp">
-      <Filter>engine\Header files</Filter>
+    <ClInclude Include="engine\math\vector_4.hpp">
+      <Filter>BoilerPlate\engine\math</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\math\vector_3.hpp">
+      <Filter>BoilerPlate\engine\math</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\math\vector_2.hpp">
+      <Filter>BoilerPlate\engine\math</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\math\matrix_4.hpp">
+      <Filter>BoilerPlate\engine\math</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\math\math_utilities.hpp">
+      <Filter>BoilerPlate\engine\math</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\utils\error_message_manager.hpp">
+      <Filter>BoilerPlate\engine\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\utils\stb_image.h">
+      <Filter>BoilerPlate\engine\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\utils\TimeManager.hpp">
+      <Filter>BoilerPlate\engine\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="input_manager.hpp">
+      <Filter>BoilerPlate\engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="renderer.hpp">
+      <Filter>BoilerPlate\engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="resource_manager.hpp">
+      <Filter>BoilerPlate\engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="texture_manager.hpp">
+      <Filter>BoilerPlate\engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="shader_utilities.hpp">
+      <Filter>BoilerPlate\engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="game.hpp">
+      <Filter>BoilerPlate\game</Filter>
+    </ClInclude>
+    <ClInclude Include="block.hpp">
+      <Filter>BoilerPlate\game\objects</Filter>
+    </ClInclude>
+    <ClInclude Include="ball.hpp">
+      <Filter>BoilerPlate\game\objects</Filter>
+    </ClInclude>
+    <ClInclude Include="SDLEvent.hpp">
+      <Filter>BoilerPlate</Filter>
+    </ClInclude>
+    <ClInclude Include="App.hpp">
+      <Filter>BoilerPlate</Filter>
     </ClInclude>
     <ClInclude Include="engine\core\c_vertices.hpp">
-      <Filter>engine\Header files</Filter>
+      <Filter>BoilerPlate\engine\core\components</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\core\c_texture.hpp">
+      <Filter>BoilerPlate\engine\core\components</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\core\c_model_matrix.hpp">
+      <Filter>BoilerPlate\engine\core\components</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\core\c_movement.hpp">
+      <Filter>BoilerPlate\engine\core\components</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\core\c_position.hpp">
+      <Filter>BoilerPlate\engine\core\components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="engine">
+    <Filter Include="BoilerPlate">
       <UniqueIdentifier>{00ea1b32-b204-439a-b1e8-2719bffbf5a0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="engine\Header files">
-      <UniqueIdentifier>{a3a69d54-49f3-4f39-a942-fcd07c77f533}</UniqueIdentifier>
+    <Filter Include="BoilerPlate\engine">
+      <UniqueIdentifier>{cb3cc341-d459-4a31-85d7-b1c721ca5799}</UniqueIdentifier>
     </Filter>
-    <Filter Include="engine\Source files">
-      <UniqueIdentifier>{8ac7a341-5c5e-48ec-9ba0-2cd9a4765dfb}</UniqueIdentifier>
+    <Filter Include="BoilerPlate\game">
+      <UniqueIdentifier>{9569218a-ad04-4f94-982a-41f6fb96fc83}</UniqueIdentifier>
     </Filter>
-    <Filter Include="engine\Assets">
+    <Filter Include="BoilerPlate\game\assets">
       <UniqueIdentifier>{47222392-1d52-4e5f-9dd6-5cce9550b511}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BoilerPlate\engine\core">
+      <UniqueIdentifier>{5f75a41c-fdd3-4429-b3f7-a4dc0690cef3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BoilerPlate\engine\math">
+      <UniqueIdentifier>{657c223e-4ad4-4948-9d4f-8d5ae5a6b0c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BoilerPlate\engine\shaders">
+      <UniqueIdentifier>{ba7dc630-d78c-4885-9b0b-0031f9f3e8cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BoilerPlate\engine\utils">
+      <UniqueIdentifier>{3ca828b9-2702-4d84-9efe-2265dc8d42b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BoilerPlate\game\objects">
+      <UniqueIdentifier>{7856f1b7-2779-42d7-b1be-c0d77b5171aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BoilerPlate\engine\core\components">
+      <UniqueIdentifier>{3d7dd3c9-b869-4020-b2a9-cc297f86a3c9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="engine\shaders\frag.glsl" />
-    <None Include="engine\shaders\vertex.glsl" />
+    <None Include="engine\shaders\frag.glsl">
+      <Filter>BoilerPlate\engine\shaders</Filter>
+    </None>
+    <None Include="engine\shaders\vertex.glsl">
+      <Filter>BoilerPlate\engine\shaders</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="game\assets\block.png">
-      <Filter>engine\Assets</Filter>
+      <Filter>BoilerPlate\game\assets</Filter>
     </Image>
     <Image Include="game\assets\background.jpg">
-      <Filter>engine\Assets</Filter>
+      <Filter>BoilerPlate\game\assets</Filter>
     </Image>
     <Image Include="game\assets\ball.png">
-      <Filter>engine\Assets</Filter>
+      <Filter>BoilerPlate\game\assets</Filter>
     </Image>
     <Image Include="game\assets\block_solid.png">
-      <Filter>engine\Assets</Filter>
+      <Filter>BoilerPlate\game\assets</Filter>
     </Image>
     <Image Include="game\assets\paddle.png">
-      <Filter>engine\Assets</Filter>
+      <Filter>BoilerPlate\game\assets</Filter>
     </Image>
   </ItemGroup>
 </Project>
