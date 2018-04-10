@@ -40,6 +40,7 @@ namespace engine
 		m_state = GameState::RUNNING;
 
 		m_game.execute();
+		m_game.update_window_size(m_width, m_height);
 
 
 
@@ -250,6 +251,7 @@ namespace engine
 		//
 		m_width = width;
 		m_height = height;
+		m_game.update_window_size(m_width, m_height);
 
 		//SetupViewport();
 	}

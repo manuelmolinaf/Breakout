@@ -12,7 +12,7 @@ namespace engine
 				mPosition = math::vector_4();
 			}
 
-			c_position::c_position(std::string& pName, math::vector_4 pPosition)
+			c_position::c_position(const std::string& pName, math::vector_4 pPosition)
 			{
 				mName = pName;
 				mPosition = pPosition;

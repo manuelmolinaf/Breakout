@@ -1,24 +1,16 @@
 #include "renderer.hpp"
 
-
+#include <iostream>
 namespace engine
 {
-	float vertices[] =
-	{
-	  0.5f,  0.5f, 0.0f,  1.0f, 1.0f, 1.0f, 1.0f,   1.0f, 1.0f,  //0
-	  0.5f, -0.5f, 0.0f,  1.0f, 1.0f, 1.0f, 1.0f,   1.0f, 0.0f,  //1
-	 -0.5f,-0.5f, 0.0f,   1.0f, 1.0f, 1.0f, 1.0f,   0.0f, 0.0f,  //2 
-	 -0.5f, 0.5f, 0.0f,   1.0f, 1.0f, 1.0f, 1.0f,   0.0f, 1.0f,  //3 
-
-	};
-
-	int indices[] = {0,2,3,0,1,2};
 
 
 	renderer::renderer()
 	{
 		mPolygonMode = true;
+		//mObjects.push_back(new game::entities::block());
 
+		//add_object(new game::entities::block());
 	}
 
 	renderer::~renderer()
@@ -32,10 +24,6 @@ namespace engine
 	void renderer::initialize_program_id()
 	{
 		mProgramID = mShaderUtilities.LoadShaders("engine/shaders/vertex.glsl", "engine/shaders/frag.glsl");
-
-		texture test;
-		test.initialize_texture("game/assets/block.png", false);
-		mTextures[0] = test;
 
 	}
 
@@ -53,37 +41,21 @@ namespace engine
 	{
 		
 		load_vertices();
-
-		//FIX
-		glActiveTexture(GL_TEXTURE0);
-		glBindTexture(GL_TEXTURE_2D, mTextures[0].get_texture());
-		//
-
-
+		
+		
 		glUseProgram(mProgramID);
-		//math::matrix_4 model = math::matrix_4();
-		//math::matrix_4 view = math::matrix_4();
-		//math::matrix_4 projection = math::matrix_4();
-
-		//model.translate(math::vector_4(0.0f, 0.80f, 0.0f, 1.0f));
-		//model.rotateZ(0.0f);
-
-		//view.translate(math::vector_4(0.0f, 0.0f, -3.0f, 1.0f));
-		//view.rotateZ(0.0f);
-		//projection.make_perspective(35.0f, 0.1f, 100.0f, (float)mHeight / mWidth);
-
-		//// retrieve the matrix uniform locations
-		//GLuint modelLoc = glGetUniformLocation(mProgramID, "model");
-		//GLuint viewLoc = glGetUniformLocation(mProgramID, "view");
-		//GLuint projectionLoc = glGetUniformLocation(mProgramID, "projection");
-
-		//float modelMatrix[16];
-		//float viewMatrix[16];
-		//float projectionMatrix[16];
+		
 
 		glBindVertexArray(mVertexArrayObject);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mElementsBufferObject);
-		glDrawElements(GL_TRIANGLES, sizeof(indices), GL_UNSIGNED_INT, (void*)0); //limit vector buffering
+
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_2D, mObjects[0]->get_component("texture")->get_texture().get_texture());
+
+		//std::cout << mObjects[0]->get_component("vertices")->get_vertices()[0];
+		
+
+		glDrawElements(GL_TRIANGLES, SIZE_OF_INDICES, GL_UNSIGNED_INT, (void*)0); //limit vector buffering
 
 	}
 
@@ -108,11 +80,11 @@ namespace engine
 		glBindVertexArray(mVertexArrayObject);
 
 		glBindBuffer(GL_ARRAY_BUFFER, mVertexBufferObject);
-		glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+		glBufferData(GL_ARRAY_BUFFER, SIZE_OF_VERTICES, mObjects[0]->get_component("vertices")->get_vertices(), GL_STATIC_DRAW);
 
 
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mElementsBufferObject);
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+		glBufferData(GL_ELEMENT_ARRAY_BUFFER, SIZE_OF_INDICES, mObjects[0]->get_component("vertices")->get_indices(), GL_STATIC_DRAW);
 
 		// vertex position attribute
 		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 9 * sizeof(float), (void*)0);
@@ -135,7 +107,7 @@ namespace engine
 		// You can unbind the VAO afterwards so other VAO calls won't accidentally modify this VAO, but this rarely happens. Modifying other
 		// VAOs requires a call to glBindVertexArray anyways so we generally don't unbind VAOs (nor VBOs) when it's not directly necessary.
 		glBindVertexArray(0);
-		
+
 
 		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	}
@@ -153,5 +125,16 @@ namespace engine
 			glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 			mPolygonMode = true;
 		}
+	}
+
+	void renderer::update_window_size(int pWidth, int pHeight)
+	{
+		mWidth = pWidth;
+		mHeight = pHeight;
+	}
+
+	void renderer::add_object(engine::core::game_object* pGameObject)
+	{
+		mObjects.push_back(pGameObject);
 	}
 }

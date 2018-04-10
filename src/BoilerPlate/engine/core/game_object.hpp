@@ -35,8 +35,8 @@ namespace engine
 			std::vector<component*>get_components() const { return mComponents; }
 			std::vector<game_object*> get_children() const { return mChildren; }
 			game_object* get_parent() const { return mParent; }
-			component *get_component(std::string pComponentName);
-			math::matrix_4 get_model_matrix();
+			component* get_component(const std::string pName);
+			//math::matrix_4 get_model_matrix();
 			
 		protected:
 

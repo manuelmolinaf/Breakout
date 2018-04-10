@@ -2,13 +2,14 @@
 #ifndef _BLOCK_HPP_
 #define _BLOCK_HPP_
 
-#include"engine/core/game_object.hpp"
+#include "engine/core/game_object.hpp"
+
 
 namespace game
 {
 	namespace entities
 	{
-		class block : engine::core::game_object
+		class block : public engine::core::game_object
 		{
 
 		public:

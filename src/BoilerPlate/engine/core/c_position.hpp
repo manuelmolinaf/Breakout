@@ -17,7 +17,7 @@ namespace engine
 			public:
 
 				c_position(const std::string& pName);
-				c_position(std::string& pName, math::vector_4 pPosition);
+				c_position(const std::string& pName, math::vector_4 pPosition);
 
 				math::vector_4* get_position();
 				void set_position(math::vector_4 pPosition);

@@ -6,15 +6,18 @@ namespace engine
 	{
 		namespace components
 		{
-			c_texture::c_texture(const std::string& pName, int pTextureIndex)
+			c_texture::c_texture(const std::string& pName)
 			{
 				mName = pName;
-				mTextureIndex = pTextureIndex;
+				
 			}
 
-			int c_texture::get_texture_index()
+			texture c_texture::get_texture()
 			{
-				return mTextureIndex;
+				mTexture.initialize_texture("game/assets/block.png", false);
+
+				return mTexture;
+
 			}
 		}
 	}

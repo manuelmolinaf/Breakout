@@ -17,6 +17,7 @@ namespace engine
 			public:
 
 				c_model_matrix(const std::string& pName);
+
 				math::matrix_4* get_model_matrix();
 
 			private:

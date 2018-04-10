@@ -5,6 +5,7 @@
 
 #include "renderer.hpp"
 #include "input_manager.hpp"
+#include "block.hpp"
 
 namespace game
 {
@@ -28,7 +29,7 @@ namespace game
 		void update();
 		void render();
 		void update_input();
-
+		void update_window_size(int pWidth, int pHeight);
 		
 
 
@@ -41,6 +42,8 @@ namespace game
 
 		//functions
 		void reset_input_limiter();
+
+		entities::block* mBlock;
 		
 
 	};

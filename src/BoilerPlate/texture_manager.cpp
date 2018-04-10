@@ -12,11 +12,11 @@ namespace engine
 
 	}
 
-	/*texture::texture(const char* texture_path)
+	texture::texture(const char* texture_path, bool pAlpha)
 	{
-		mTexture = load_texture(texture_path);
+		mTexture = load_texture(texture_path, pAlpha);
 	}
-    */
+    
 	GLuint texture::load_texture(const char* pTexturePath, bool pAlpha)
 	{
 		unsigned int texture;

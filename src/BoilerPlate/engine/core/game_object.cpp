@@ -91,11 +91,11 @@ namespace engine
 			}
 		}
 
-		component *game_object::get_component(std::string Name)
+		component* game_object::get_component(const std::string pName)
 		{
 			for (int i = 0; i < mComponents.size(); i++)
 			{
-				if (mComponents[i]->get_name() == Name)
+				if (mComponents[i]->get_name() == pName)
 				{
 					return mComponents[i];
 				}
