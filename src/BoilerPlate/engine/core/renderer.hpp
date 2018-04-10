@@ -29,7 +29,7 @@ namespace engine
 
 		renderer();
 		~renderer();
-		void load_vertices(engine::core::game_object& pGameObject);
+		
 		void initialize_program_id();
 		void render(engine::core::game_object& pGameObject);
 		void toggle_polygon_mode();
@@ -54,6 +54,8 @@ namespace engine
 		texture mTextures[MAX_TEXTURES];
 
 		void bind_texture(engine::core::game_object& pGameObject);
+		void load_vertices(engine::core::game_object& pGameObject);
+		void mvp(math::matrix_4 pModelMatrix);
 
 	};
 

@@ -1,10 +1,14 @@
 #include "game.hpp"
-
+#include "../engine/math/vector_4.hpp"
 namespace game
 {
 	game::game()
 	{
 		reset_input_limiter();
+
+		mPaddle.get_component("model_matrix")->get_model_matrix()->translate(engine::math::vector_4(0.0f, -0.9f, 0.0f, 0.0f));
+		mBall.get_component("model_matrix")->get_model_matrix()->translate(engine::math::vector_4(0.3f, -0.4f, 0.0f, 0.0f));
+
 		
 	}
 
@@ -37,8 +41,9 @@ namespace game
 	void game::render()
 	{
 
-		mRenderer.render(mSolidBlock);
+		mRenderer.render(mPaddle);
 		mRenderer.render(mBall);
+		mRenderer.render(mBlock);
 	}
 
 	void game::update_input()

@@ -26,15 +26,18 @@ namespace engine
 	}
 
 
+
 	void renderer::render(engine::core::game_object& pGameObject)
 	{
 		
 		load_vertices(pGameObject);
+		mvp(*pGameObject.get_component("model_matrix")->get_model_matrix());
 		
 		glUseProgram(mProgramID);
 
 		glBindVertexArray(mVertexArrayObject);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mElementsBufferObject);
+
 
 		bind_texture(pGameObject);
 		
@@ -48,6 +51,41 @@ namespace engine
 		glGenVertexArrays(1, &mVertexArrayObject);
 		glGenBuffers(1, &mVertexBufferObject);
 		glGenBuffers(1, &mElementsBufferObject);
+	}
+
+	void renderer::mvp(math::matrix_4 pModelMatrix)
+	{
+		math::matrix_4 model = math::matrix_4();
+		math::matrix_4 view = math::matrix_4();
+		math::matrix_4 projection = math::matrix_4();
+
+		model.translate(math::vector_4(0.0f, 0.80f, 0.0f, 1.0f));
+		model.rotateZ(0.0f);
+
+		view.translate(math::vector_4(0.0f, 0.0f, -3.0f, 1.0f));
+		view.rotateZ(0.0f);
+		projection.make_perspective(35.0f, 0.1f, 100.0f, (float)mHeight / mWidth);
+
+		// retrieve the matrix uniform locations
+		GLuint modelLoc = glGetUniformLocation(mProgramID, "model");
+		GLuint viewLoc = glGetUniformLocation(mProgramID, "view");
+		GLuint projectionLoc = glGetUniformLocation(mProgramID, "projection");
+
+		float modelMatrix[16];
+		float viewMatrix[16];
+		float projectionMatrix[16];
+
+		pModelMatrix.assign_matrix(modelMatrix);
+
+		view.assign_matrix(viewMatrix);
+		projection.assign_matrix(projectionMatrix);
+
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, modelMatrix);
+
+		glUniformMatrix4fv(viewLoc, 1, GL_FALSE, viewMatrix);
+		glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, projectionMatrix);
+
+		float resolution[] = { static_cast<float>(1136), static_cast<float>(640) };
 	}
 
 	void renderer::load_vertices(engine::core::game_object& pGameObject)
@@ -106,12 +144,6 @@ namespace engine
 		mPolygonMode = !mPolygonMode;
 	}
 
-	void renderer::update_window_size(int pWidth, int pHeight)
-	{
-		mWidth = pWidth;
-		mHeight = pHeight;
-	}
-
 	void renderer::initialize_textures()
 	{
 		texture textureInitializer;
@@ -148,6 +180,19 @@ namespace engine
 			glActiveTexture(GL_TEXTURE0);
 			glBindTexture(GL_TEXTURE_2D, mTextures[BALL_TEXTURE_INDEX].get_texture());
 		}
+		else if (pGameObject.get_component("object_type")->get_object_type() == "paddle")
+		{
+			glActiveTexture(GL_TEXTURE0);
+			glBindTexture(GL_TEXTURE_2D, mTextures[PADDLE_TEXTURE_INDEX].get_texture());
+		}
+	}
 
+	
+
+
+	void renderer::update_window_size(int pWidth, int pHeight)
+	{
+		mWidth = pWidth;
+		mHeight = pHeight;
 	}
 }

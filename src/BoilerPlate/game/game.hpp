@@ -46,6 +46,7 @@ namespace game
 		objects::ball mBall;
 		objects::block mBlock;
 		objects::solid_block mSolidBlock;
+		objects::paddle mPaddle;
 
 		
 		
