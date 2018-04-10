@@ -1,8 +1,8 @@
 #include "block.hpp"
 
 //
-#include "engine/core/include_components.hpp"
-#include "engine/math/vector_4.hpp"
+#include "../../engine/core/include_components.hpp"
+#include "../../engine/math/vector_4.hpp"
 
 
 namespace game
@@ -16,7 +16,7 @@ namespace game
 
 		block::~block()
 		{
-
+			
 		}
 
 
@@ -35,7 +35,7 @@ namespace game
 
 			engine::core::components::c_vertices* blockVertices = new engine::core::components::c_vertices("vertices", vertices, indices);
 
-			engine::core::components::c_texture* blockTexture = new engine::core::components::c_texture("texture");
+			engine::core::components::c_texture* blockTexture = new engine::core::components::c_texture("texture", "game/assets/block.png", false);
 			
 			engine::core::components::c_position* blockPosition = new engine::core::components::c_position("position", engine::math::vector_4(0.0f, 0.0f, 0.0f, 0.0f));
 

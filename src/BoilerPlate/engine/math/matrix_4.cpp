@@ -500,7 +500,7 @@ namespace engine
 
 		void matrix_4::translate(vector_4 pTranslationVector)
 		{
-			matrix_4 translationMatrix = matrix_4();
+			matrix_4 translationMatrix;
 
 
 			translationMatrix.get_matrix()[12] = pTranslationVector.mX;

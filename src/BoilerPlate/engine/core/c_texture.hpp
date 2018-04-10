@@ -4,7 +4,7 @@
 #define _C_TEXTURE_HPP_
 
 #include "component.hpp"
-#include "../../texture_manager.hpp"
+#include "texture_manager.hpp"
 
 
 namespace engine
@@ -16,13 +16,15 @@ namespace engine
 			class c_texture : public engine::core::component
 			{
 			public:
-				c_texture(const std::string& pName);
+				c_texture(const std::string& pName, const char* pTexturePath, bool pHasAlpha);
 
-				texture get_texture();
+				texture get_object_texture();
 
 			private:
 
 				texture mTexture;
+				const char* mTexturePath;
+				bool mHasAlpha;
 			};
 		}
 	}

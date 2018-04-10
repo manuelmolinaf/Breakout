@@ -9,7 +9,7 @@
 // Asteroids
 #include "SDLEvent.hpp"
 #include "engine/utils/TimeManager.hpp"
-#include "game.hpp"
+#include "game/game.hpp"
 
 namespace engine
 {

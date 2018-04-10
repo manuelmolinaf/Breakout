@@ -2,7 +2,7 @@
 #ifndef _BLOCK_HPP_
 #define _BLOCK_HPP_
 
-#include "engine/core/game_object.hpp"
+#include "../../engine/core/game_object.hpp"
 
 
 namespace game

@@ -7,9 +7,6 @@ namespace engine
 {
 	const float DESIRED_FRAME_RATE = 60.0f;
 	const float DESIRED_FRAME_TIME = 1.0f / DESIRED_FRAME_RATE;
-
-	
-	
 	
 
 	App::App(const std::string& title, const int width, const int height)
@@ -70,12 +67,6 @@ namespace engine
 			m_state = GameState::INIT_FAILED;
 			return false;
 		}
-
-		/*glEnable(GL_BLEND);
-		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);*/
-
-		// Setup the viewport
-		//
 
 		//SetupViewport();
 

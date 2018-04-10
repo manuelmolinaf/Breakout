@@ -3,9 +3,9 @@
 #ifndef GAME_HPP
 #define GAME_HPP
 
-#include "renderer.hpp"
-#include "input_manager.hpp"
-#include "block.hpp"
+#include "../engine/core/renderer.hpp"
+#include "../engine/core/input_manager.hpp"
+#include "objects/include_game_objects.hpp"
 
 namespace game
 {
@@ -43,7 +43,9 @@ namespace game
 		//functions
 		void reset_input_limiter();
 
+		entities::ball* mBall;
 		entities::block* mBlock;
+		
 		
 
 	};
