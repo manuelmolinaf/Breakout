@@ -1,6 +1,6 @@
 #pragma once
-#ifndef _BLOCK_HPP_
-#define _BLOCK_HPP_
+#ifndef _PADDLE_HPP_
+#define _PADDLE_HPP_
 
 #include "../../engine/core/game_object.hpp"
 
@@ -9,12 +9,12 @@ namespace game
 {
 	namespace objects
 	{
-		class block : public engine::core::game_object
+		class paddle : public engine::core::game_object
 		{
 
 		public:
-			block();
-			~block();
+			paddle();
+			~paddle();
 
 
 		private:

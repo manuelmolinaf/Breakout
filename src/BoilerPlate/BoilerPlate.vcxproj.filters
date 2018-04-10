@@ -49,9 +49,6 @@
     <ClCompile Include="engine\core\c_position.cpp">
       <Filter>BoilerPlate\engine\core\components</Filter>
     </ClCompile>
-    <ClCompile Include="engine\core\c_texture.cpp">
-      <Filter>BoilerPlate\engine\core\components</Filter>
-    </ClCompile>
     <ClCompile Include="engine\core\c_vertices.cpp">
       <Filter>BoilerPlate\engine\core\components</Filter>
     </ClCompile>
@@ -78,6 +75,12 @@
     </ClCompile>
     <ClCompile Include="engine\core\c_object_type.cpp">
       <Filter>BoilerPlate\engine\core\components</Filter>
+    </ClCompile>
+    <ClCompile Include="game\objects\padddle.cpp">
+      <Filter>BoilerPlate\game\objects</Filter>
+    </ClCompile>
+    <ClCompile Include="game\objects\solid_block.cpp">
+      <Filter>BoilerPlate\game\objects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -132,9 +135,6 @@
     <ClInclude Include="engine\core\c_vertices.hpp">
       <Filter>BoilerPlate\engine\core\components</Filter>
     </ClInclude>
-    <ClInclude Include="engine\core\c_texture.hpp">
-      <Filter>BoilerPlate\engine\core\components</Filter>
-    </ClInclude>
     <ClInclude Include="engine\core\c_model_matrix.hpp">
       <Filter>BoilerPlate\engine\core\components</Filter>
     </ClInclude>
@@ -170,6 +170,12 @@
     </ClInclude>
     <ClInclude Include="engine\core\c_object_type.hpp">
       <Filter>BoilerPlate\engine\core\components</Filter>
+    </ClInclude>
+    <ClInclude Include="game\objects\paddle.hpp">
+      <Filter>BoilerPlate\game\objects</Filter>
+    </ClInclude>
+    <ClInclude Include="game\objects\solid_block.hpp">
+      <Filter>BoilerPlate\game\objects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -222,10 +228,10 @@
     <Image Include="game\assets\ball.png">
       <Filter>BoilerPlate\game\assets</Filter>
     </Image>
-    <Image Include="game\assets\block_solid.png">
+    <Image Include="game\assets\paddle.png">
       <Filter>BoilerPlate\game\assets</Filter>
     </Image>
-    <Image Include="game\assets\paddle.png">
+    <Image Include="game\assets\solid_block.png">
       <Filter>BoilerPlate\game\assets</Filter>
     </Image>
   </ItemGroup>

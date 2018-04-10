@@ -37,7 +37,7 @@ namespace game
 	void game::render()
 	{
 
-		mRenderer.render(mBlock);
+		mRenderer.render(mSolidBlock);
 		mRenderer.render(mBall);
 	}
 

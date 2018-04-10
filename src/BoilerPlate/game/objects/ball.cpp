@@ -2,7 +2,7 @@
 
 namespace game
 {
-	namespace entities
+	namespace objects
 	{
 		ball::ball()
 		{
@@ -29,8 +29,6 @@ namespace game
 
 			engine::core::components::c_vertices* ballVertices = new engine::core::components::c_vertices("vertices", vertices, indices);
 
-			engine::core::components::c_texture* ballTexture = new engine::core::components::c_texture("texture", "game/assets/ball.png", true);
-
 			engine::core::components::c_position* ballPosition = new engine::core::components::c_position("position", engine::math::vector_4(0.0f, 0.0f, 0.0f, 0.0f));
 
 			engine::core::components::c_model_matrix* ballModelMatrix = new engine::core::components::c_model_matrix("model_matrix");
@@ -38,7 +36,6 @@ namespace game
 			engine::core::components::c_object_type* ballType = new engine::core::components::c_object_type("object_type", "ball");
 
 			attach_component(ballVertices);
-			attach_component(ballTexture);
 			attach_component(ballPosition);
 			attach_component(ballModelMatrix);
 			attach_component(ballType);

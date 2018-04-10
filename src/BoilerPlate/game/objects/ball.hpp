@@ -6,7 +6,7 @@
 
 namespace game
 {
-	namespace entities
+	namespace objects
 	{
 		class ball : public engine::core::game_object
 		{

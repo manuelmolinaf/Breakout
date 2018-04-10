@@ -119,17 +119,29 @@ namespace engine
 		textureInitializer.initialize_texture("game/assets/block.png", false);
 		mTextures[BLOCK_TEXTURE_INDEX] = textureInitializer;
 
+		textureInitializer.initialize_texture("game/assets/solid_block.png", false);
+		mTextures[SOLID_BLOCK_TEXTURE_INDEX] = textureInitializer;
+
 		textureInitializer.initialize_texture("game/assets/ball.png", true);
 		mTextures[BALL_TEXTURE_INDEX] = textureInitializer;
+
+		textureInitializer.initialize_texture("game/assets/paddle.png", true);
+		mTextures[PADDLE_TEXTURE_INDEX] = textureInitializer;
+
 	}
 
 
 	void renderer::bind_texture(engine::core::game_object& pGameObject)
 	{
-		if (pGameObject.get_component("object_type")->get_object_type() == "block")
+		if ((pGameObject.get_component("object_type")->get_object_type()) == "block")
 		{
 			glActiveTexture(GL_TEXTURE0);
 			glBindTexture(GL_TEXTURE_2D, mTextures[BLOCK_TEXTURE_INDEX].get_texture());
+		}
+		else if (pGameObject.get_component("object_type")->get_object_type() == "solid_block")
+		{
+			glActiveTexture(GL_TEXTURE0);
+			glBindTexture(GL_TEXTURE_2D, mTextures[SOLID_BLOCK_TEXTURE_INDEX].get_texture());
 		}
 		else if(pGameObject.get_component("object_type")->get_object_type() == "ball")
 		{
