@@ -175,6 +175,7 @@ copy /Y "$(SolutionDir)\Externals\SDL2-2.0.4\lib\x64\SDL2.dll" "$(TargetDir)SDL2
     <ClCompile Include="engine\core\component.cpp" />
     <ClCompile Include="engine\core\c_model_matrix.cpp" />
     <ClCompile Include="engine\core\c_movement.cpp" />
+    <ClCompile Include="engine\core\c_object_type.cpp" />
     <ClCompile Include="engine\core\c_position.cpp" />
     <ClCompile Include="engine\core\c_texture.cpp" />
     <ClCompile Include="engine\core\c_vertices.cpp" />
@@ -202,6 +203,7 @@ copy /Y "$(SolutionDir)\Externals\SDL2-2.0.4\lib\x64\SDL2.dll" "$(TargetDir)SDL2
     <ClInclude Include="engine\core\component.hpp" />
     <ClInclude Include="engine\core\c_model_matrix.hpp" />
     <ClInclude Include="engine\core\c_movement.hpp" />
+    <ClInclude Include="engine\core\c_object_type.hpp" />
     <ClInclude Include="engine\core\c_position.hpp" />
     <ClInclude Include="engine\core\c_texture.hpp" />
     <ClInclude Include="engine\core\c_vertices.hpp" />

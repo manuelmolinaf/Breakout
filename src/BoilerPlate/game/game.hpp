@@ -43,8 +43,8 @@ namespace game
 		//functions
 		void reset_input_limiter();
 
-		entities::ball* mBall;
-		entities::block* mBlock;
+		entities::ball mBall;
+		entities::block mBlock;
 		
 		
 

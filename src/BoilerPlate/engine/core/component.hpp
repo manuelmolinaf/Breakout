@@ -41,6 +41,8 @@ namespace engine
 			virtual float* get_movement_value() { return NULL; }
 			virtual float* get_angle() { return NULL; }
 			virtual math::matrix_4* get_model_matrix() { return NULL; }
+			virtual std::string get_object_type() { std::string emptyString = ""; return emptyString; }
+			
 		protected:
 
 			//memebers

@@ -25,19 +25,8 @@ namespace engine
 
 	}
 
-	void renderer::render_objects()
-	{
 
-		for (int i = 0; i < mObjects.size() ; i++)
-		{
-			render(mObjects[i]);
-		}
-		//render(mObjects[0]);
-		//render(mObjects[1]);
-	}
-
-
-	void renderer::render(engine::core::game_object* pGameObject)
+	void renderer::render(engine::core::game_object& pGameObject)
 	{
 		
 		load_vertices(pGameObject);
@@ -47,8 +36,7 @@ namespace engine
 		glBindVertexArray(mVertexArrayObject);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mElementsBufferObject);
 
-		glActiveTexture(GL_TEXTURE0);
-		glBindTexture(GL_TEXTURE_2D, pGameObject->get_component("texture")->get_object_texture().get_texture());
+		bind_texture(pGameObject);
 		
 
 		glDrawElements(GL_TRIANGLES, SIZE_OF_INDICES, GL_UNSIGNED_INT, (void*)0); //limit vector buffering
@@ -62,7 +50,7 @@ namespace engine
 		glGenBuffers(1, &mElementsBufferObject);
 	}
 
-	void renderer::load_vertices(engine::core::game_object* pGameObject)
+	void renderer::load_vertices(engine::core::game_object& pGameObject)
 	{
 
 		glEnable(GL_BLEND);
@@ -75,11 +63,11 @@ namespace engine
 		glBindVertexArray(mVertexArrayObject);
 
 		glBindBuffer(GL_ARRAY_BUFFER, mVertexBufferObject);
-		glBufferData(GL_ARRAY_BUFFER, SIZE_OF_VERTICES, pGameObject->get_component("vertices")->get_vertices(), GL_STATIC_DRAW);
+		glBufferData(GL_ARRAY_BUFFER, SIZE_OF_VERTICES, pGameObject.get_component("vertices")->get_vertices(), GL_STATIC_DRAW);
 
 
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mElementsBufferObject);
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, SIZE_OF_INDICES, pGameObject->get_component("vertices")->get_indices(), GL_STATIC_DRAW);
+		glBufferData(GL_ELEMENT_ARRAY_BUFFER, SIZE_OF_INDICES, pGameObject.get_component("vertices")->get_indices(), GL_STATIC_DRAW);
 
 		// vertex position attribute
 		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 9 * sizeof(float), (void*)0);
@@ -124,11 +112,30 @@ namespace engine
 		mHeight = pHeight;
 	}
 
-	void renderer::add_object(engine::core::game_object* pGameObject)
+	void renderer::initialize_textures()
 	{
-		mObjects.push_back(pGameObject);
-		//mObjects[mObjectIndex] = pGameObject;
+		texture textureInitializer;
+		
+		textureInitializer.initialize_texture("game/assets/block.png", false);
+		mTextures[BLOCK_TEXTURE_INDEX] = textureInitializer;
 
-		mObjectIndex++;
+		textureInitializer.initialize_texture("game/assets/ball.png", true);
+		mTextures[BALL_TEXTURE_INDEX] = textureInitializer;
+	}
+
+
+	void renderer::bind_texture(engine::core::game_object& pGameObject)
+	{
+		if (pGameObject.get_component("object_type")->get_object_type() == "block")
+		{
+			glActiveTexture(GL_TEXTURE0);
+			glBindTexture(GL_TEXTURE_2D, mTextures[BLOCK_TEXTURE_INDEX].get_texture());
+		}
+		else if(pGameObject.get_component("object_type")->get_object_type() == "ball")
+		{
+			glActiveTexture(GL_TEXTURE0);
+			glBindTexture(GL_TEXTURE_2D, mTextures[BALL_TEXTURE_INDEX].get_texture());
+		}
+
 	}
 }

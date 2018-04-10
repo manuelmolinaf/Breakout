@@ -76,6 +76,9 @@
     <ClCompile Include="engine\core\shader_utilities.cpp">
       <Filter>BoilerPlate\engine\core</Filter>
     </ClCompile>
+    <ClCompile Include="engine\core\c_object_type.cpp">
+      <Filter>BoilerPlate\engine\core\components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="engine\core\component.hpp">
@@ -164,6 +167,9 @@
     </ClInclude>
     <ClInclude Include="game\objects\include_game_objects.hpp">
       <Filter>BoilerPlate\game\objects</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\core\c_object_type.hpp">
+      <Filter>BoilerPlate\engine\core\components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

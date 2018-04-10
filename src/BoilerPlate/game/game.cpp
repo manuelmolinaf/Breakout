@@ -5,12 +5,7 @@ namespace game
 	game::game()
 	{
 		reset_input_limiter();
-		mBall = new entities::ball();
-		mBlock = new entities::block();
-
-		mRenderer.add_object(mBlock);
-	
-		mRenderer.add_object(mBall);
+		
 	}
 
 	game::~game()
@@ -24,7 +19,7 @@ namespace game
 
 		mRenderer.generate_buffers();
 
-		
+		mRenderer.initialize_textures();
 		
 	}
 
@@ -42,7 +37,8 @@ namespace game
 	void game::render()
 	{
 
-		mRenderer.render_objects();
+		mRenderer.render(mBlock);
+		mRenderer.render(mBall);
 	}
 
 	void game::update_input()

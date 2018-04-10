@@ -14,6 +14,7 @@ namespace engine
 		{
 			class c_model_matrix : public core::component
 			{
+
 			public:
 
 				c_model_matrix(const std::string& pName);

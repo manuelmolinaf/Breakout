@@ -41,11 +41,14 @@ namespace game
 
 			engine::core::components::c_model_matrix* blockModelMatrix = new engine::core::components::c_model_matrix("model_matrix");
 
+			engine::core::components::c_object_type* blockType = new engine::core::components::c_object_type("object_type", "block");
+
+
 			attach_component(blockVertices);
 			attach_component(blockTexture);
 			attach_component(blockPosition);
 			attach_component(blockModelMatrix);
-			
+			attach_component(blockType);
 		}
 
 

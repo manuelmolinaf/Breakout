@@ -35,10 +35,13 @@ namespace game
 
 			engine::core::components::c_model_matrix* ballModelMatrix = new engine::core::components::c_model_matrix("model_matrix");
 
+			engine::core::components::c_object_type* ballType = new engine::core::components::c_object_type("object_type", "ball");
+
 			attach_component(ballVertices);
 			attach_component(ballTexture);
 			attach_component(ballPosition);
 			attach_component(ballModelMatrix);
+			attach_component(ballType);
 		
 			
 		}
