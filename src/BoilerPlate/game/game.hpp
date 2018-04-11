@@ -49,7 +49,7 @@ namespace game
 		objects::paddle mPaddle;
 		objects::background mBackground;
 
-		std::vector<objects::block> mBlocks;
+		std::vector<engine::core::game_object*> mBlocks;
 		int mWidth;
 		int mHeight;
 

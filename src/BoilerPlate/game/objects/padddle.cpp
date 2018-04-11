@@ -50,7 +50,7 @@ namespace game
 			attach_component(paddleType);
 			attach_component(paddleMovement);
 
-			this->translate(engine::math::vector_4(0.0f, -0.9f, 0.0f, 0.0f));
+			translate(engine::math::vector_4(0.0f, -0.9f, 0.0f, 0.0f));
 		}
 
 

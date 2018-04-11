@@ -1,5 +1,6 @@
 #include "ball.hpp"
 
+#include <algorithm>
 namespace game
 {
 	namespace objects
@@ -7,6 +8,8 @@ namespace game
 		ball::ball()
 		{
 			attach_components();
+
+			mAttached = true;
 		}
 		
 		ball::~ball()
@@ -14,15 +17,43 @@ namespace game
 			
 		}
 
+		void ball::ball_update(float pDeltaTime, float pWidth)
+		{
+			if (!mAttached)
+			{
+				translate(engine::math::vector_4(0.0f, 0.02f, 0.0f, 0.0f));
+			}
+		}
+
+		bool ball::is_colliding(engine::math::vector_4 pBlockPosition)
+		{
+			float nearestX = std::max(pBlockPosition.mX, std::min(get_component("position")->get_position().mX, pBlockPosition.mX + 0.388f));
+			float nearestY = std::max(pBlockPosition.mY, std::min(get_component("position")->get_position().mY, pBlockPosition.mY + 0.218f));
+
+			float deltaX = get_component("position")->get_position().mX - nearestX;
+			float deltaY = get_component("position")->get_position().mY - nearestY;
+
+			return (deltaX * deltaX + deltaY * deltaY) < (0.05f * 0.05f);
+		}
+
+		void ball::detach_ball()
+		{
+			mAttached = false;
+		}
+
+		bool ball::get_attached_state()
+		{
+			return mAttached;
+		}
 
 		void ball::attach_components()
 		{
 			float vertices[36] =
 			{
-				0.02f,  0.02f, 0.0f,  1.0f, 1.0f, 1.0f, 1.0f,   1.0f, 1.0f,  //0
-				0.02f, -0.02f, 0.0f,  1.0f, 1.0f, 1.0f, 1.0f,   1.0f, 0.0f,  //1
-				-0.02f,-0.02f, 0.0f,  1.0f, 1.0f, 1.0f, 1.0f,   0.0f, 0.0f,  //2 
-				-0.02f, 0.02f, 0.0f,  1.0f, 1.0f, 1.0f, 1.0f,   0.0f, 1.0f,  //3
+				0.03f,  0.03f, 0.0f,  1.0f, 1.0f, 1.0f, 1.0f,   1.0f, 1.0f,  //0
+				0.03f, -0.03f, 0.0f,  1.0f, 1.0f, 1.0f, 1.0f,   1.0f, 0.0f,  //1
+				-0.03f,-0.03f, 0.0f,  1.0f, 1.0f, 1.0f, 1.0f,   0.0f, 0.0f,  //2 
+				-0.03f, 0.03f, 0.0f,  1.0f, 1.0f, 1.0f, 1.0f,   0.0f, 1.0f,  //3
 			};
 
 			int indices[6] = { 0,2,3,0,1,2 };
@@ -39,6 +70,8 @@ namespace game
 			attach_component(ballPosition);
 			attach_component(ballModelMatrix);
 			attach_component(ballType);
+
+			translate(engine::math::vector_4(0.0f,-0.85f,0.0f,0.0f));
 		
 			
 		}

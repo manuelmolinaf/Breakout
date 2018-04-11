@@ -1,16 +1,18 @@
+#include<iostream>
+
 #include "game.hpp"
 #include "../engine/math/vector_4.hpp"
-
-#include<iostream>
 namespace game
 {
 	game::game()
 	{
 		reset_input_limiter();
+		mLevel.load("game/levels/test.txt", 3.12, 0.9);
 
-		
-		mBall.get_component("model_matrix")->get_model_matrix()->translate(engine::math::vector_4(0.3f, -0.4f, 0.0f, 0.0f));
-
+		for (int i = 0; i < mLevel.get_level_blocks().size(); i++)
+		{
+			mBlocks.push_back(mLevel.get_level_blocks()[i]);
+		}
 		
 	}
 
@@ -24,15 +26,16 @@ namespace game
 		mRenderer.initialize_program_id();
 
 		mRenderer.generate_buffers();
-
 		mRenderer.initialize_textures();
-
-		mLevel.load("game/levels/test.txt", 3.12, 0.9);
+		
 		
 	}
 
 	void game::update()
 	{
+
+		mBall.ball_update();
+		
 		update_input();
 
 		if (mInputLimiter != 0)
@@ -40,18 +43,29 @@ namespace game
 			mInputLimiter--;
 		}
 
+		for (int i = 0; i < mBlocks.size(); i++)
+		{
+			if (mBall.is_colliding(mBlocks[i]->get_component("position")->get_position()))
+			{
+				mBlocks.erase(mBlocks.begin() + i);
+			}
+		}
+
+
+
 	}
 
 	void game::render()
 	{
 		mRenderer.render(mBackground);
 		mRenderer.render(mPaddle);
-		mRenderer.render(mBall);
 
-		for (int i = 0; i < mLevel.get_level_blocks().size(); i++)
+		for (int i = 0; i < mBlocks.size(); i++)
 		{
-			mRenderer.render(*mLevel.get_level_blocks()[i]);
+			mRenderer.render(*mBlocks[i]);
 		}
+
+		mRenderer.render(mBall);
 
 	}
 
@@ -67,12 +81,28 @@ namespace game
 		if (mInputManager.A_IsPressed() && mPaddle.get_component("position")->get_position().mX > -1.45f)
 		{
 			mPaddle.translate(engine::math::vector_4(-0.025f, 0.0f, 0.0f, 0.0f));
+
+			if (mBall.get_attached_state())
+			{
+				mBall.translate(engine::math::vector_4(-0.025f, 0.0f, 0.0f, 0.0f));
+			}
 			
 		}
 
 		if (mInputManager.D_IsPressed() && mPaddle.get_component("position")->get_position().mX < 1.45f)
 		{
 			mPaddle.translate(engine::math::vector_4(0.025f, 0.0f, 0.0f, 0.0f));
+
+			if (mBall.get_attached_state())
+			{
+				mBall.translate(engine::math::vector_4(0.025f, 0.0f, 0.0f, 0.0f));
+			}
+
+		}
+
+		if (mInputManager.SPACE_IsPressed() && mInputLimiter == 0)
+		{
+			mBall.detach_ball();
 		}
 
 	}

@@ -93,6 +93,9 @@ namespace engine
 		case SDL_SCANCODE_D:
 			m_game.mInputManager.SetD(true);
 			break;
+		case SDL_SCANCODE_SPACE:
+			m_game.mInputManager.SetSPACE(true);
+			break;
 		}
 	}
 
@@ -111,6 +114,9 @@ namespace engine
 			break;
 		case SDL_SCANCODE_D:
 			m_game.mInputManager.SetD(false);
+			break;
+		case SDL_SCANCODE_SPACE:
+			m_game.mInputManager.SetSPACE(false);
 			break;
 		default:
 			//DO NOTHING
