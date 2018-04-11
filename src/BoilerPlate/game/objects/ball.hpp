@@ -15,7 +15,7 @@ namespace game
 			ball();
 			~ball();
 
-			void ball_update(float pDeltaTime, pWidth);
+			void ball_update();
 			void detach_ball();
 			bool get_attached_state();
 

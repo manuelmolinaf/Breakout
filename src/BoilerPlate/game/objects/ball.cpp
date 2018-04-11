@@ -17,7 +17,7 @@ namespace game
 			
 		}
 
-		void ball::ball_update(float pDeltaTime, float pWidth)
+		void ball::ball_update()
 		{
 			if (!mAttached)
 			{
@@ -33,7 +33,7 @@ namespace game
 			float deltaX = get_component("position")->get_position().mX - nearestX;
 			float deltaY = get_component("position")->get_position().mY - nearestY;
 
-			return (deltaX * deltaX + deltaY * deltaY) < (0.05f * 0.05f);
+			return (deltaX * deltaX + deltaY * deltaY) < (0.03f * 0.03f);
 		}
 
 		void ball::detach_ball()

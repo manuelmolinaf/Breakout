@@ -45,7 +45,8 @@ namespace game
 
 		for (int i = 0; i < mBlocks.size(); i++)
 		{
-			if (mBall.is_colliding(mBlocks[i]->get_component("position")->get_position()))
+			if (mBall.is_colliding(mBlocks[i]->get_component("position")->get_position()) && 
+				mBlocks[i]->get_component("object_type")->get_object_type() != "solid_block")
 			{
 				mBlocks.erase(mBlocks.begin() + i);
 			}
