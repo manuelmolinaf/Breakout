@@ -15,22 +15,21 @@ namespace game
 	void game_level::load(const char *pFile, float pLevelWidth, float pLevelHeight)
 	{
 
-		// Clear old data
+		
 		this->mBlocks.clear();
 
-		// Load from file
 		int tileCode;
-		//game_level level;
+		
 		std::string line;
 		std::ifstream fstream(pFile);
 		std::vector<std::vector<int>> tileData;
 		if (fstream)
 		{
-			while (std::getline(fstream, line)) // Read each line from level file
+			while (std::getline(fstream, line)) 
 			{
 				std::istringstream sstream(line);
 				std::vector<int> row;
-				while (sstream >> tileCode) // Read each word seperated by spaces
+				while (sstream >> tileCode) 
 				{
 					row.push_back(tileCode);
 				}
@@ -51,12 +50,12 @@ namespace game
 		float unitWidth = levelWidth / static_cast<float>(width);
 		float unitHeight = levelHeight / height;
 
-		// Initialize level tiles based on tileData		
+				
 		for (int y = 0; y < height; ++y)
 		{
 			for (int x = 0; x < width; ++x)
 			{
-				// Check block type from level data (2D level array)
+			
 				if (tileData[y][x] == 1)
 				{
 					objects::solid_block* newBlock = new objects::solid_block();
