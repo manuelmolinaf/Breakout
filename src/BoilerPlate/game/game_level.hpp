@@ -19,13 +19,12 @@ namespace game
 		game_level();
 
 		void load(const char *pFile, float pLevelWidth, float pLevelHeight);
-		
-		std::vector<objects::block> get_level_blocks();
+		std::vector<objects::block*> get_level_blocks();
 		//void update_window_size(int pWidth, int pHeight);
 
 	private:
 
-		std::vector<objects::block> mBlocks;
+		std::vector<objects::block*> mBlocks;
 
 		void init(std::vector<std::vector<int>> tileData, float levelWidth, float levelHeight);
 

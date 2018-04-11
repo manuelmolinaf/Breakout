@@ -56,12 +56,10 @@ namespace game
 				// Check block type from level data (2D level array)
 				if (tileData[y][x] == 1)
 				{
-
-					std::cout << "r444444";
-
-					objects::block newBlock;
-					newBlock.translate(engine::math::vector_4(unitWidth * x, unitHeight * y, 0.0f, 0.0f));
-					this->mBlocks.push_back(objects::block());
+					std::cout << unitWidth * x<<"\n";
+					objects::block* newBlock = new objects::block();
+					newBlock->translate(engine::math::vector_4((unitWidth * x)-1.365, (unitHeight * y) + 0.1, 0.0f, 0.0f));
+					mBlocks.push_back(newBlock);
 				}
 
 			}
@@ -71,7 +69,7 @@ namespace game
 
 
 
-	std::vector<objects::block> game_level::get_level_blocks()
+	std::vector<objects::block*> game_level::get_level_blocks()
 	{
 		return mBlocks;
 	}

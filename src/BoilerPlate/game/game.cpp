@@ -27,7 +27,7 @@ namespace game
 
 		mRenderer.initialize_textures();
 
-		//mLevel.load("game/levels/test.txt", 1136, 640);
+		mLevel.load("game/levels/test.txt", 3.12, 0.9);
 		
 	}
 
@@ -46,13 +46,13 @@ namespace game
 	{
 
 		mRenderer.render(mPaddle);
-		mRenderer.render(mBall);
-		mRenderer.render(mBlock);
+		//mRenderer.render(mBall);
+		//mRenderer.render(mBlock);
 
-		/*for (int i = 0; i < mLevel.get_level_blocks().size(); i++)
+		for (int i = 0; i < mLevel.get_level_blocks().size(); i++)
 		{
-			mRenderer.render(mLevel.get_level_blocks()[i]);
-		}*/
+			mRenderer.render(*mLevel.get_level_blocks()[i]);
+		}
 
 	}
 
