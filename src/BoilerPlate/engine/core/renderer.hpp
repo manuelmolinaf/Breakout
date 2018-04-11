@@ -19,6 +19,7 @@ const int BLOCK_TEXTURE_INDEX = 0;
 const int SOLID_BLOCK_TEXTURE_INDEX = 1;
 const int BALL_TEXTURE_INDEX = 2;
 const int PADDLE_TEXTURE_INDEX = 3;
+const int BACKGROUND_TEXTURE_INDEX = 4;
 
 namespace engine
 {

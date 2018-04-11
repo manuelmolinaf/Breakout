@@ -20,7 +20,7 @@ namespace game
 
 		void load(const char *pFile, float pLevelWidth, float pLevelHeight);
 		std::vector<engine::core::game_object*> get_level_blocks();
-		//void update_window_size(int pWidth, int pHeight);
+		
 
 	private:
 

@@ -85,6 +85,9 @@
     <ClCompile Include="game\game_level.cpp">
       <Filter>BoilerPlate\game</Filter>
     </ClCompile>
+    <ClCompile Include="game\objects\background.cpp">
+      <Filter>BoilerPlate\game\objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="engine\core\component.hpp">
@@ -183,6 +186,9 @@
     <ClInclude Include="game\game_level.hpp">
       <Filter>BoilerPlate\game</Filter>
     </ClInclude>
+    <ClInclude Include="game\objects\background.hpp">
+      <Filter>BoilerPlate\game\objects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="BoilerPlate">
@@ -231,9 +237,6 @@
     <Image Include="game\assets\block.png">
       <Filter>BoilerPlate\game\assets</Filter>
     </Image>
-    <Image Include="game\assets\background.jpg">
-      <Filter>BoilerPlate\game\assets</Filter>
-    </Image>
     <Image Include="game\assets\ball.png">
       <Filter>BoilerPlate\game\assets</Filter>
     </Image>
@@ -241,6 +244,9 @@
       <Filter>BoilerPlate\game\assets</Filter>
     </Image>
     <Image Include="game\assets\solid_block.png">
+      <Filter>BoilerPlate\game\assets</Filter>
+    </Image>
+    <Image Include="game\assets\background.jpg">
       <Filter>BoilerPlate\game\assets</Filter>
     </Image>
   </ItemGroup>

@@ -99,11 +99,10 @@ namespace game
 
 	}
 
-
-
 	std::vector<engine::core::game_object*> game_level::get_level_blocks()
 	{
 		return mBlocks;
 	}
+
 
 }

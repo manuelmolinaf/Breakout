@@ -160,6 +160,9 @@ namespace engine
 		textureInitializer.initialize_texture("game/assets/paddle.png", true);
 		mTextures[PADDLE_TEXTURE_INDEX] = textureInitializer;
 
+		textureInitializer.initialize_texture("game/assets/background.jpg", false);
+		mTextures[BACKGROUND_TEXTURE_INDEX] = textureInitializer;
+
 	}
 
 
@@ -184,6 +187,11 @@ namespace engine
 		{
 			glActiveTexture(GL_TEXTURE0);
 			glBindTexture(GL_TEXTURE_2D, mTextures[PADDLE_TEXTURE_INDEX].get_texture());
+		}
+		else if (pGameObject.get_component("object_type")->get_object_type() == "background")
+		{
+			glActiveTexture(GL_TEXTURE0);
+			glBindTexture(GL_TEXTURE_2D, mTextures[BACKGROUND_TEXTURE_INDEX].get_texture());
 		}
 	}
 

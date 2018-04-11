@@ -672,6 +672,15 @@ namespace engine
 			pMatrix[14] = mMatrix[14];
 			pMatrix[15] = mMatrix[15];
 		}
+
+
+		void matrix_4::scale(vector_3 pScaleVector)
+		{
+			mMatrix[0] *= pScaleVector.mX;
+			mMatrix[5] *= pScaleVector.mY;
+			mMatrix[10] *= pScaleVector.mZ;
+		}
+
 	}
 
 }

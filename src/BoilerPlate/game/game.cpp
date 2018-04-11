@@ -44,7 +44,7 @@ namespace game
 
 	void game::render()
 	{
-
+		mRenderer.render(mBackground);
 		mRenderer.render(mPaddle);
 		mRenderer.render(mBall);
 

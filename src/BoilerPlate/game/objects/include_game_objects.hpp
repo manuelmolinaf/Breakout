@@ -4,3 +4,4 @@
 #include "solid_block.hpp"
 #include "ball.hpp"
 #include "paddle.hpp"
+#include "background.hpp"

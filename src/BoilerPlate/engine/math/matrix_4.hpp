@@ -54,7 +54,7 @@ namespace engine
 			void make_perspective(const float &pFieldOfView, const float &pNearClippingPlane, const float &pFarClippingPlane, const float& pScreenAspect);
 			void make_look_at(vector_3 pLookingPosition, vector_3 pTargetPosition);
 			void assign_matrix(float pMatrix[]);
-
+			void scale(vector_3 pScaleVector);
 
 
 			matrix_4 operator=(matrix_4& pRightSide);
