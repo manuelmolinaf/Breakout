@@ -21,13 +21,7 @@ namespace game
 		void solid_block::attach_components()
 		{
 
-			float vertices[36] =
-			{
-				0.1f,  0.06f, 0.0f,  1.0f, 1.0f, 1.0f, 1.0f,   1.0f, 1.0f,  //0
-				0.1f, -0.06f, 0.0f,  1.0f, 1.0f, 1.0f, 1.0f,   1.0f, 0.0f,  //1
-			   -0.1f,-0.06f, 0.0f,  1.0f, 1.0f, 1.0f, 1.0f,   0.0f, 0.0f,  //2 
-				-0.1f, 0.06f, 0.0f,  1.0f, 1.0f, 1.0f, 1.0f,   0.0f, 1.0f,  //3
-			};
+			
 
 			int indices[6] = { 0,2,3,0,1,2 };
 

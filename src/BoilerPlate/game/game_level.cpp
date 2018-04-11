@@ -59,11 +59,39 @@ namespace game
 				// Check block type from level data (2D level array)
 				if (tileData[y][x] == 1)
 				{
-					objects::block* newBlock = new objects::block();
+					objects::solid_block* newBlock = new objects::solid_block();
 
 					newBlock->translate(engine::math::vector_4((unitWidth * x)-1.365, (unitHeight * -y) + 0.8, 0.0f, 0.0f));
 
 					this->mBlocks.push_back(newBlock);
+				}
+				else if (tileData[y][x] > 1)
+				{
+					if (tileData[y][x] == 2)
+					{
+						objects::block* newBlock = new objects::block(engine::math::vector_3(0.2f, 0.6f, 1.0f));
+						newBlock->translate(engine::math::vector_4((unitWidth * x) - 1.365, (unitHeight * -y) + 0.8, 0.0f, 0.0f));
+						this->mBlocks.push_back(newBlock);
+					}
+					else if (tileData[y][x] == 3)
+					{
+						objects::block* newBlock = new objects::block(engine::math::vector_3(0.0f, 0.7f, 0.0f));
+						newBlock->translate(engine::math::vector_4((unitWidth * x) - 1.365, (unitHeight * -y) + 0.8, 0.0f, 0.0f));
+						this->mBlocks.push_back(newBlock);
+					}
+					else if (tileData[y][x] == 4)
+					{
+						objects::block* newBlock = new objects::block(engine::math::vector_3(0.8f, 0.8f, 0.4f));
+						newBlock->translate(engine::math::vector_4((unitWidth * x) - 1.365, (unitHeight * -y) + 0.8, 0.0f, 0.0f));
+						this->mBlocks.push_back(newBlock);
+					}
+					else if (tileData[y][x] == 5)
+					{
+						objects::block* newBlock = new objects::block(engine::math::vector_3(1.0f, 0.5f, 0.0f));
+						newBlock->translate(engine::math::vector_4((unitWidth * x) - 1.365, (unitHeight * -y) + 0.8, 0.0f, 0.0f));
+						this->mBlocks.push_back(newBlock);
+					}
+
 				}
 
 			}
@@ -73,7 +101,7 @@ namespace game
 
 
 
-	std::vector<objects::block*> game_level::get_level_blocks()
+	std::vector<engine::core::game_object*> game_level::get_level_blocks()
 	{
 		return mBlocks;
 	}

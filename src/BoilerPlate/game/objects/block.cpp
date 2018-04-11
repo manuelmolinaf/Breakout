@@ -12,6 +12,22 @@ namespace game
 		block::block()
 		{
 			attach_components();
+
+
+
+		}
+
+		block::block(engine::math::vector_3 pColor)
+		{
+
+			for (int i = 3; i < 31; i+=9) 
+			{
+				vertices[i] = pColor.mX;
+				vertices[i + 1] = pColor.mY;
+				vertices[i + 2] = pColor.mZ;
+			}
+
+			attach_components();
 		}
 
 		block::~block()
@@ -23,13 +39,6 @@ namespace game
 		void block::attach_components()
 		{
 	
-			float vertices[MAX_VERTICES] =
-			{
-				0.194f,  0.109f, 0.0f,  1.0f, 1.0f, 1.0f, 1.0f,   1.0f, 1.0f,  //0
-				0.194f, -0.109f, 0.0f,  1.0f, 1.0f, 1.0f, 1.0f,   1.0f, 0.0f,  //1
-				-0.194f,-0.109f, 0.0f,  1.0f, 1.0f, 1.0f, 1.0f,   0.0f, 0.0f,  //2 
-				-0.194f, 0.109f, 0.0f,  1.0f, 1.0f, 1.0f, 1.0f,   0.0f, 1.0f,  //3
-			};
 
 			int indices[6] = { 0,2,3,0,1,2 };
 
