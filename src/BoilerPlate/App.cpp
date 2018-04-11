@@ -68,7 +68,7 @@ namespace engine
 			return false;
 		}
 
-		//SetupViewport();
+		SetupViewport();
 
 		// Change game state
 		//
@@ -87,6 +87,12 @@ namespace engine
 		case SDL_SCANCODE_T:
 			m_game.mInputManager.SetT(true);
 			break;
+		case SDL_SCANCODE_A:
+			m_game.mInputManager.SetA(true);
+			break;
+		case SDL_SCANCODE_D:
+			m_game.mInputManager.SetD(true);
+			break;
 		}
 	}
 
@@ -99,6 +105,12 @@ namespace engine
 			break;
 		case SDL_SCANCODE_T:
 			m_game.mInputManager.SetT(false);
+			break;
+		case SDL_SCANCODE_A:
+			m_game.mInputManager.SetA(false);
+			break;
+		case SDL_SCANCODE_D:
+			m_game.mInputManager.SetD(false);
 			break;
 		default:
 			//DO NOTHING
@@ -244,7 +256,7 @@ namespace engine
 		m_height = height;
 		m_game.update_window_size(m_width, m_height);
 
-		//SetupViewport();
+		SetupViewport();
 	}
 
 	void App::OnExit()

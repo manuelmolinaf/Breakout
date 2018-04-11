@@ -6,6 +6,7 @@
 #include "../engine/core/renderer.hpp"
 #include "../engine/core/input_manager.hpp"
 #include "objects/include_game_objects.hpp"
+#include "game_level.hpp"
 
 namespace game
 {
@@ -48,6 +49,13 @@ namespace game
 		objects::solid_block mSolidBlock;
 		objects::paddle mPaddle;
 
+		std::vector<objects::block> mBlocks;
+		int mWidth;
+		int mHeight;
+
+		game_level mLevel;
+
+		//void initial
 		
 		
 

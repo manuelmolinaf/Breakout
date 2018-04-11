@@ -104,5 +104,11 @@ namespace engine
 			return NULL;
 		}
 
+		void game_object::translate(math::vector_4 pTranslateVector)
+		{
+			this->get_component("model_matrix")->get_model_matrix()->translate(pTranslateVector);
+			this->get_component("position")->set_position(this->get_component("position")->get_position() += pTranslateVector);
+		}
+
 	}
 }

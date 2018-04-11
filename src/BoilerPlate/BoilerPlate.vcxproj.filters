@@ -82,6 +82,9 @@
     <ClCompile Include="game\objects\solid_block.cpp">
       <Filter>BoilerPlate\game\objects</Filter>
     </ClCompile>
+    <ClCompile Include="game\game_level.cpp">
+      <Filter>BoilerPlate\game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="engine\core\component.hpp">
@@ -176,6 +179,9 @@
     </ClInclude>
     <ClInclude Include="game\objects\solid_block.hpp">
       <Filter>BoilerPlate\game\objects</Filter>
+    </ClInclude>
+    <ClInclude Include="game\game_level.hpp">
+      <Filter>BoilerPlate\game</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

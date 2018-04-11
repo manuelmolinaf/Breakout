@@ -611,8 +611,6 @@ namespace engine
 		void matrix_4::make_perspective(const float &pFieldOfView, const float &pNearClippingPlane, const float &pFarClippingPlane, const float& pScreenAspect)
 		{
 
-			
-			
 			float scale = (float)(1.0f / (tan(mathTool.degrees_to_radians(pFieldOfView * 0.5f))));
 
 			float inverseClippingPlaneDifference = 1.0f / (pFarClippingPlane - pNearClippingPlane);

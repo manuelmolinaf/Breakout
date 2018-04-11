@@ -77,7 +77,11 @@ namespace engine
 
 		float math_utilities::degrees_to_radians(float pAngle)
 		{
-			return (float)(pAngle * (PI / 180));
+			float result;
+
+			result = ((pAngle * PI) / 180);
+
+			return result;
 		}
 
 		float math_utilities::radians_to_degrees(float pAngle)

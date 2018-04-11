@@ -3,7 +3,7 @@
 #define _C_POSITION_HPP_
 
 #include "component.hpp"
-#include "..\math\vector_4.hpp"
+#include "../math/vector_4.hpp"
 
 
 namespace engine
@@ -19,7 +19,7 @@ namespace engine
 				c_position(const std::string& pName);
 				c_position(const std::string& pName, math::vector_4 pPosition);
 
-				math::vector_4* get_position();
+				math::vector_4 get_position();
 				void set_position(math::vector_4 pPosition);
 
 			private:

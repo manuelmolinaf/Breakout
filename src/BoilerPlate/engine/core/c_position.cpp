@@ -18,9 +18,9 @@ namespace engine
 				mPosition = pPosition;
 			}
 
-			math::vector_4* c_position::get_position()
+			math::vector_4 c_position::get_position()
 			{
-				return &mPosition;
+				return mPosition;
 			}
 
 			void c_position::set_position(math::vector_4 pPosition)

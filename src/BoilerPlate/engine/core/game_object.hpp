@@ -10,6 +10,7 @@
 #include "unique_id.hpp"
 #include "include_components.hpp"
 #include "..\math\matrix_4.hpp"
+#include "..\math\vector_4.hpp"
 
 namespace engine
 {
@@ -30,6 +31,7 @@ namespace engine
 			void remove_child(game_object*);
 			void update(double deltaTime) override;
 			void render() override;
+			void translate(math::vector_4 pTranslateVector);
 
 			//getters
 			std::vector<component*>get_components() const { return mComponents; }

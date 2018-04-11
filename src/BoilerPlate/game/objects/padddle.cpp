@@ -2,7 +2,7 @@
 
 //
 #include "../../engine/core/include_components.hpp"
-
+#include "../../engine/math/vector_4.hpp"
 namespace game
 {
 	namespace objects
@@ -10,6 +10,7 @@ namespace game
 		paddle::paddle()
 		{
 			attach_components();
+
 		}
 
 		paddle::~paddle()
@@ -23,10 +24,10 @@ namespace game
 
 			float vertices[36] =
 			{
-				0.15f,  0.035f, 0.0f,  1.0f, 1.0f, 1.0f, 1.0f,   1.0f, 1.0f,  //0
-				0.15f, -0.035f, 0.0f,  1.0f, 1.0f, 1.0f, 1.0f,   1.0f, 0.0f,  //1
-				-0.15f,-0.035f, 0.0f,  1.0f, 1.0f, 1.0f, 1.0f,   0.0f, 0.0f,  //2 
-				-0.15f, 0.035f, 0.0f,  1.0f, 1.0f, 1.0f, 1.0f,   0.0f, 1.0f,  //3
+				0.2f,  0.03f, 0.0f,  1.0f, 1.0f, 1.0f, 1.0f,   1.0f, 1.0f,  //0
+				0.2f, -0.03f, 0.0f,  1.0f, 1.0f, 1.0f, 1.0f,   1.0f, 0.0f,  //1
+				-0.2f,-0.03f, 0.0f,  1.0f, 1.0f, 1.0f, 1.0f,   0.0f, 0.0f,  //2 
+				-0.2f, 0.03f, 0.0f,  1.0f, 1.0f, 1.0f, 1.0f,   0.0f, 1.0f,  //3
 			};
 
 			int indices[6] = { 0,2,3,0,1,2 };
@@ -39,11 +40,17 @@ namespace game
 
 			engine::core::components::c_object_type* paddleType = new engine::core::components::c_object_type("object_type", "paddle");
 
+			engine::core::components::c_movement* paddleMovement = new engine::core::components::c_movement("movement", 0.0001f);
+
+
 
 			attach_component(paddleVertices);
 			attach_component(paddlePosition);
 			attach_component(paddleModelMatrix);
 			attach_component(paddleType);
+			attach_component(paddleMovement);
+
+			this->translate(engine::math::vector_4(0.0f, -0.9f, 0.0f, 0.0f));
 		}
 
 

@@ -1,12 +1,14 @@
 #include "game.hpp"
 #include "../engine/math/vector_4.hpp"
+
+#include<iostream>
 namespace game
 {
 	game::game()
 	{
 		reset_input_limiter();
 
-		mPaddle.get_component("model_matrix")->get_model_matrix()->translate(engine::math::vector_4(0.0f, -0.9f, 0.0f, 0.0f));
+		
 		mBall.get_component("model_matrix")->get_model_matrix()->translate(engine::math::vector_4(0.3f, -0.4f, 0.0f, 0.0f));
 
 		
@@ -55,6 +57,17 @@ namespace game
 			reset_input_limiter();
 		}
 
+		if (mInputManager.A_IsPressed() && mPaddle.get_component("position")->get_position().mX > -1.45f)
+		{
+			mPaddle.translate(engine::math::vector_4(-0.025f, 0.0f, 0.0f, 0.0f));
+			
+		}
+
+		if (mInputManager.D_IsPressed() && mPaddle.get_component("position")->get_position().mX < 1.45f)
+		{
+			mPaddle.translate(engine::math::vector_4(0.025f, 0.0f, 0.0f, 0.0f));
+		}
+
 	}
 
 	void game::reset_input_limiter()
@@ -64,6 +77,8 @@ namespace game
 
 	void game::update_window_size(int pWidth, int pHeight)
 	{
+		mWidth = pWidth;
+		mHeight = pHeight;
 		mRenderer.update_window_size(pWidth, pHeight);
 	}
 
