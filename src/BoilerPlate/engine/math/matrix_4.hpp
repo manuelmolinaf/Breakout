@@ -52,9 +52,7 @@ namespace engine
 				const float &pMaximumYAxis, const float &pMinimumZAxis, const float &pMaximumZAxis);
 
 			void make_perspective(const float &pFieldOfView, const float &pNearClippingPlane, const float &pFarClippingPlane, const float& pScreenAspect);
-
 			void make_look_at(vector_3 pLookingPosition, vector_3 pTargetPosition);
-
 			void assign_matrix(float pMatrix[]);
 
 
@@ -66,7 +64,7 @@ namespace engine
 			matrix_4 operator/(matrix_4& pRightSide);
 
 			friend std::ostream& operator<<(std::ostream& pOstream, matrix_4 pMatrix);
-			float& matrix_4::operator[](const int pRightSide);
+			//float& matrix_4::operator[](const int pRightSide);
 
 
 		private:

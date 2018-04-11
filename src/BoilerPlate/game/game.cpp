@@ -46,7 +46,7 @@ namespace game
 	{
 
 		mRenderer.render(mPaddle);
-		//mRenderer.render(mBall);
+		mRenderer.render(mBall);
 		//mRenderer.render(mBlock);
 
 		for (int i = 0; i < mLevel.get_level_blocks().size(); i++)
