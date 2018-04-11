@@ -57,21 +57,23 @@ namespace game
 				if (tileData[y][x] == 1)
 				{
 
+					std::cout << "r444444";
 
 					objects::block newBlock;
-
 					newBlock.translate(engine::math::vector_4(unitWidth * x, unitHeight * y, 0.0f, 0.0f));
-
 					this->mBlocks.push_back(objects::block());
 				}
 
 			}
 		}
 
-		std::vector<objects::block> game_level::game_leve_blocks()
-		{
-
-		}
-
 	}
+
+
+
+	std::vector<objects::block> game_level::get_level_blocks()
+	{
+		return mBlocks;
+	}
+
 }

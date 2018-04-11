@@ -215,6 +215,9 @@
     <Filter Include="BoilerPlate\engine\core\components">
       <UniqueIdentifier>{3d7dd3c9-b869-4020-b2a9-cc297f86a3c9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="BoilerPlate\game\levels">
+      <UniqueIdentifier>{d41c2517-e8a6-4440-b1a8-9f25a20fe5ab}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="engine\shaders\frag.glsl">
@@ -240,5 +243,10 @@
     <Image Include="game\assets\solid_block.png">
       <Filter>BoilerPlate\game\assets</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="game\levels\test.txt">
+      <Filter>BoilerPlate\game\levels</Filter>
+    </Text>
   </ItemGroup>
 </Project>

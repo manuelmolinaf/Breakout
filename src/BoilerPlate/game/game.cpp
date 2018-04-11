@@ -26,6 +26,8 @@ namespace game
 		mRenderer.generate_buffers();
 
 		mRenderer.initialize_textures();
+
+		//mLevel.load("game/levels/test.txt", 1136, 640);
 		
 	}
 
@@ -46,6 +48,12 @@ namespace game
 		mRenderer.render(mPaddle);
 		mRenderer.render(mBall);
 		mRenderer.render(mBlock);
+
+		/*for (int i = 0; i < mLevel.get_level_blocks().size(); i++)
+		{
+			mRenderer.render(mLevel.get_level_blocks()[i]);
+		}*/
+
 	}
 
 	void game::update_input()

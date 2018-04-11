@@ -245,6 +245,9 @@ copy /Y "$(SolutionDir)\Externals\SDL2-2.0.4\lib\x64\SDL2.dll" "$(TargetDir)SDL2
     <None Include="engine\shaders\frag.glsl" />
     <None Include="engine\shaders\vertex.glsl" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="game\levels\test.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
